@@ -1,140 +1,173 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
+<meta charset="UTF-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Pubity Case Studies â UK &amp; Middle East | Pubity</title>
+<title>Pubity Case Studies — UK &amp; Middle East | Pubity</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet"/>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <style>
-:root{--bg:#0d0d0d;--surface:#1a1a1a;--card:#222;--card-hover:#2a2a2a;--border:#333;--yellow:#FFD700;--green:#70AD47;--red:#df2f4a;--blue:#579bfc;--purple:#784bd1;--orange:#ff9f43;--text:#f0f0f0;--muted:#888;--uk:#216edf;--us:#ff6d3b;}
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap');
+:root{
+  --bg:#ffffff; --surface:#f9fafb; --card:#ffffff; --card-hover:#f8fafc;
+  --border:#e5e7eb; --yellow:#FFD700; --yellow-dark:#b45309;
+  --green:#16a34a; --red:#dc2626; --blue:#2563eb; --purple:#7c3aed;
+  --orange:#ea580c; --text:#111827; --muted:#6b7280;
+  --uk:#1d4ed8; --us:#ea580c;
+}
 *{box-sizing:border-box;margin:0;padding:0;}
-body{background:var(--bg);color:var(--text);font-family:'Segoe UI',Arial,sans-serif;font-size:14px;line-height:1.5;}
+body{background:#fff;color:#111827;font-family:'Inter','Segoe UI',Arial,sans-serif;font-size:14px;line-height:1.5;}
 
-.header{background:#000;border-bottom:3px solid var(--yellow);padding:18px 32px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;}
+.header{background:#fff;border-bottom:4px solid #FFD700;box-shadow:0 2px 8px rgba(0,0,0,.08);padding:18px 32px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;}
 .header-left{display:flex;align-items:center;gap:16px;}
 .logo{background:var(--yellow);color:#000;font-weight:900;font-size:18px;padding:6px 12px;letter-spacing:1px;}
-.header h1{font-size:17px;font-weight:800;}
+.header h1{font-size:17px;font-weight:800;color:#111827;}
 .header-sub{font-size:11px;color:var(--muted);margin-top:2px;}
-.header-badge{background:var(--yellow);color:#000;font-size:11px;font-weight:700;padding:4px 10px;border-radius:20px;}
+.header-badge{background:var(--yellow);color:#000;font-size:11px;font-weight:700;padding:4px 10px 10px 10px;border-radius:12px;min-width:220px;}
+.header-badge-title{font-weight:800;margin-bottom:6px;}
 
-.stats-bar{display:flex;background:var(--surface);border-bottom:1px solid var(--border);overflow-x:auto;}
+.stats-bar{display:flex;background:#f9fafb;border-bottom:1px solid var(--border);overflow-x:auto;}
 .stat{padding:12px 22px;border-right:1px solid var(--border);min-width:110px;flex-shrink:0;}
-.stat-val{font-size:20px;font-weight:800;color:var(--yellow);}
+.stat-val{font-size:20px;font-weight:800;color:#111827;}
 .stat-label{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-top:2px;}
 
-.filters-wrap{background:var(--surface);border-bottom:1px solid var(--border);padding:14px 32px;display:flex;flex-direction:column;gap:8px;}
+.filters-wrap{background:#fff;border-bottom:1px solid var(--border);padding:14px 32px;display:flex;flex-direction:column;gap:8px;}
 .filter-row{display:flex;align-items:center;gap:6px;flex-wrap:wrap;}
 .filter-label{font-size:10px;text-transform:uppercase;color:var(--muted);letter-spacing:.5px;width:65px;flex-shrink:0;}
-.filter-btn{background:#2a2a2a;border:1px solid var(--border);color:var(--text);padding:4px 12px;border-radius:20px;font-size:11px;cursor:pointer;transition:all .15s;white-space:nowrap;}
-.filter-btn:hover{border-color:var(--yellow);color:var(--yellow);}
-.filter-btn.active{background:var(--yellow);color:#000;border-color:var(--yellow);font-weight:700;}
+.filter-btn{background:#f3f4f6;border:1px solid #d1d5db;color:#374151;padding:4px 12px;border-radius:20px;font-size:11px;cursor:pointer;transition:all .15s;white-space:nowrap;font-weight:600;}
+.filter-btn:hover{border-color:var(--yellow);background:#fef9c3;}
+.filter-btn.active{background:#FFD700;color:#000;border-color:#FFD700;font-weight:700;}
+.status-filter-btn{background:rgba(0,0,0,.08);border:1px solid rgba(0,0,0,.15);color:#000;padding:3px 10px;border-radius:20px;font-size:11px;cursor:pointer;white-space:nowrap;font-weight:600;}
+.status-filter-btn.active{background:#000;color:#FFD700;border-color:#000;}
 .results-count{font-size:11px;color:var(--muted);margin-left:auto;}
 
 .main{max-width:1400px;margin:0 auto;padding:28px 32px;}
 
 .section-header{display:flex;align-items:center;gap:10px;margin:28px 0 14px;}
-.section-flag{font-size:18px;}
-.section-title{font-size:17px;font-weight:800;}
-.section-pill{background:#2a2a2a;border:1px solid var(--border);font-size:10px;padding:2px 9px;border-radius:10px;color:var(--muted);}
+.section-title{font-size:17px;font-weight:800;color:#111827;}
+.section-pill{background:#f3f4f6;border:1px solid var(--border);font-size:10px;padding:2px 9px;border-radius:10px;color:var(--muted);}
 .section-divider{flex:1;height:1px;background:var(--border);}
 
-/* CLOSED LOST SECTION */
 .section-lost .section-title{color:var(--red);}
-.section-lost .section-divider{background:var(--red);opacity:.3;}
-.card-lost{border-color:rgba(223,47,74,.4)!important;background:#1c1015!important;}
-.card-lost:hover{border-color:rgba(223,47,74,.7)!important;}
-.lost-badge{background:rgba(223,47,74,.15);border:1px solid var(--red);color:var(--red);font-size:10px;font-weight:700;padding:2px 8px;border-radius:4px;}
-.lost-reason{background:#1a1012;border-left:3px solid var(--red);padding:8px 12px;margin:8px 0;border-radius:0 4px 4px 0;font-size:12px;color:#ccc;}
+.section-lost .section-divider{background:rgba(220,38,38,.3);}
+.card-lost{border-color:rgba(220,38,38,.3)!important;background:#fff5f5!important;}
+.card-lost:hover{border-color:rgba(220,38,38,.6)!important;}
+.lost-badge{background:rgba(220,38,38,.1);border:1px solid var(--red);color:var(--red);font-size:10px;font-weight:700;padding:2px 8px;border-radius:4px;}
+.lost-reason{background:#fff5f5;border-left:3px solid var(--red);padding:8px 12px;margin:8px 0;border-radius:0 4px 4px 0;font-size:12px;color:#374151;}
 
 .cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:14px;}
 
-.card{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:16px;transition:all .2s;position:relative;}
-.card:hover{background:var(--card-hover);border-color:#555;transform:translateY(-1px);box-shadow:0 4px 20px rgba(0,0,0,.4);}
-.card-brand{font-size:15px;font-weight:800;}
+.card{background:#fff;border:1px solid #e5e7eb;box-shadow:0 1px 3px rgba(0,0,0,.06);border-radius:8px;padding:16px;transition:all .2s;position:relative;}
+.card:hover{background:#f8fafc;border-color:#cbd5e1;transform:translateY(-1px);box-shadow:0 4px 16px rgba(0,0,0,.08);}
+.card-brand{font-size:15px;font-weight:800;color:#111827;}
 .card-campaign{font-size:12px;color:var(--muted);margin-top:2px;}
 .card-meta{display:flex;align-items:center;gap:8px;margin-top:4px;flex-wrap:wrap;}
-.card-seller{font-size:11px;color:var(--yellow);font-weight:600;}
-.card-date{font-size:10px;color:var(--muted);background:#1a1a1a;border:1px solid #333;padding:1px 7px;border-radius:10px;}
+.card-seller{font-size:11px;color:var(--yellow-dark);font-weight:700;}
+.card-date{font-size:10px;color:var(--muted);background:#f3f4f6;border:1px solid var(--border);padding:1px 7px;border-radius:10px;}
 
 .card-tags{display:flex;gap:5px;flex-wrap:wrap;margin-top:8px;}
 .tag{font-size:10px;padding:2px 7px;border-radius:10px;border:1px solid;}
-.tag-uk{color:var(--uk);border-color:var(--uk);background:rgba(33,110,223,.1);}
-.tag-us{color:var(--us);border-color:var(--us);background:rgba(255,109,59,.1);}
-.tag-industry{color:var(--purple);border-color:var(--purple);background:rgba(120,75,209,.1);}
-.tag-year{color:var(--muted);border-color:#444;background:#1a1a1a;}
-.tag-deal{color:var(--green);border-color:var(--green);background:rgba(112,173,71,.1);font-weight:700;}
+.tag-uk{color:var(--uk);border-color:var(--uk);background:rgba(29,78,216,.08);}
+.tag-us{color:var(--us);border-color:var(--us);background:rgba(234,88,12,.08);}
+.tag-industry{color:var(--purple);border-color:var(--purple);background:rgba(124,58,237,.08);}
+.tag-year{color:var(--muted);border-color:#d1d5db;background:#f3f4f6;}
+.tag-deal{color:var(--green);border-color:var(--green);background:rgba(22,163,74,.08);font-weight:700;}
 
 .metrics{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0;}
-.metric{background:#1a1a1a;border:1px solid var(--border);border-radius:5px;padding:5px 9px;min-width:72px;}
-.metric-val{font-size:14px;font-weight:800;color:var(--green);}
-.metric-val.y{color:var(--yellow);}
-.metric-val.b{color:var(--blue);}
-.metric-val.r{color:var(--red);}
-.metric-val.o{color:var(--orange);}
+.metric{background:#f9fafb;border:1px solid var(--border);border-radius:5px;padding:5px 9px;min-width:72px;}
+.metric-val{font-size:14px;font-weight:800;color:#16a34a;}
+.metric-val.y{color:#b45309;}
+.metric-val.b{color:#2563eb;}
+.metric-val.r{color:#dc2626;}
+.metric-val.o{color:#ea580c;}
 .metric-label{font-size:10px;color:var(--muted);text-transform:uppercase;margin-top:1px;}
 
-.quote-block{background:#1a1a1a;border-left:3px solid var(--yellow);padding:8px 12px;margin:8px 0;border-radius:0 5px 5px 0;font-size:12px;color:#ccc;font-style:italic;}
+.quote-block{background:#fefce8;border-left:3px solid #FFD700;padding:8px 12px;margin:8px 0;border-radius:0 5px 5px 0;font-size:12px;color:#374151;font-style:italic;}
 
 .card-actions{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px;}
 .btn{font-size:11px;padding:4px 10px;border-radius:5px;border:1px solid;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:4px;font-weight:600;transition:all .15s;}
-.btn-deck{color:var(--yellow);border-color:var(--yellow);background:rgba(255,215,0,.08);}
-.btn-deck:hover{background:var(--yellow);color:#000;}
-.btn-pca{color:var(--green);border-color:var(--green);background:rgba(112,173,71,.08);}
-.btn-pca:hover{background:var(--green);color:#000;}
-.btn-hs{color:var(--blue);border-color:var(--blue);background:rgba(87,155,252,.08);}
-.btn-hs:hover{background:var(--blue);color:#000;}
-.btn-mp{color:var(--orange);border-color:var(--orange);background:rgba(255,159,67,.08);}
-.btn-mp:hover{background:var(--orange);color:#000;}
+.btn-deck{color:var(--yellow-dark);border-color:var(--yellow-dark);background:rgba(180,83,9,.06);}
+.btn-deck:hover{background:#b45309;color:#fff;}
+.btn-pca{color:var(--green);border-color:var(--green);background:rgba(22,163,74,.06);}
+.btn-pca:hover{background:var(--green);color:#fff;}
+.btn-hs{color:var(--blue);border-color:var(--blue);background:rgba(37,99,235,.06);}
+.btn-hs:hover{background:var(--blue);color:#fff;}
+.btn-mp{color:var(--orange);border-color:var(--orange);background:rgba(234,88,12,.06);}
+.btn-mp:hover{background:var(--orange);color:#fff;}
 
 details.drop{margin-top:8px;}
 details.drop summary{cursor:pointer;font-size:12px;font-weight:700;color:var(--green);display:flex;align-items:center;gap:5px;padding:5px 0;user-select:none;list-style:none;}
-details.drop summary::before{content:'â';font-size:9px;transition:transform .2s;}
+details.drop summary::before{content:'▶';font-size:9px;transition:transform .2s;}
 details.drop[open] summary::before{transform:rotate(90deg);}
-details.drop.deck-drop summary{color:var(--yellow);}
-.drop-content{background:#111;border:1px solid #2a2a2a;border-radius:5px;padding:12px;margin-top:5px;font-size:12px;}
+details.drop.deck-drop summary{color:var(--yellow-dark);}
+.drop-content{background:#f9fafb;border:1px solid #e5e7eb;border-radius:5px;padding:12px;margin-top:5px;font-size:12px;}
 .drop-section{margin-bottom:10px;}
 .drop-section:last-child{margin-bottom:0;}
-.drop-section h4{color:var(--yellow);font-size:10px;text-transform:uppercase;letter-spacing:.5px;margin-bottom:5px;}
-.drop-section p{color:#bbb;line-height:1.6;}
+.drop-section h4{color:#b45309;font-size:10px;text-transform:uppercase;letter-spacing:.5px;margin-bottom:5px;}
+.drop-section p{color:#374151;line-height:1.6;}
 .pm-row{display:flex;flex-wrap:wrap;gap:5px;margin:6px 0;}
-.pm{background:#1a1a1a;border:1px solid #333;border-radius:4px;padding:3px 8px;}
+.pm{background:#fff;border:1px solid #e5e7eb;border-radius:4px;padding:3px 8px;}
 .pm strong{color:var(--green);font-size:12px;}
 .pm span{font-size:9px;color:var(--muted);display:block;}
 
 .charts-section{display:grid;grid-template-columns:2fr 1fr;gap:20px;margin:24px 0;}
-.chart-card{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:18px;}
-.chart-title{font-size:13px;font-weight:700;margin-bottom:14px;}
+.chart-card{background:#fff;border:1px solid #e5e7eb;border-radius:8px;padding:18px;}
+.chart-title{font-size:13px;font-weight:700;margin-bottom:14px;color:#111827;}
 .chart-wrap{position:relative;height:260px;}
 
 .deliv-section{margin:24px 0;}
 .table-wrap{overflow-x:auto;}
 table{width:100%;border-collapse:collapse;font-size:12px;}
-th{background:#111;color:var(--muted);text-transform:uppercase;font-size:10px;letter-spacing:.5px;padding:9px 12px;text-align:left;border-bottom:2px solid var(--border);white-space:nowrap;}
-td{padding:9px 12px;border-bottom:1px solid #1e1e1e;vertical-align:top;}
-tr:hover td{background:#1a1a1a;}
-.td-brand{font-weight:700;}
-.td-num{font-weight:700;color:var(--green);}
+th{background:#fef9c3;color:#374151;text-transform:uppercase;font-size:10px;letter-spacing:.5px;padding:9px 12px;text-align:left;border-bottom:2px solid #FFD700;white-space:nowrap;font-weight:700;}
+td{padding:9px 12px;border-bottom:1px solid #f3f4f6;vertical-align:top;color:#374151;}
+tr:hover td{background:#f9fafb;}
+.td-brand{font-weight:700;color:#111827;}
+.td-num{font-weight:700;color:#16a34a;}
 .td-link a{color:var(--blue);text-decoration:none;font-size:11px;}
 .td-link a:hover{text-decoration:underline;}
 .td-hs a{color:var(--blue);text-decoration:none;font-size:10px;}
 
+.seller-summary{margin:32px 0 24px;}
+.seller-table{width:100%;border-collapse:collapse;font-size:13px;}
+.seller-table thead th{background:#FFD700;color:#000;font-weight:800;padding:10px 14px;text-align:left;font-size:12px;letter-spacing:.3px;}
+.seller-table tbody td{padding:9px 14px;border-bottom:1px solid #f3f4f6;color:#374151;}
+.seller-table tbody tr:hover td{background:#f9fafb;}
+.seller-table .total-row td{background:#fef9c3;font-weight:800;border-top:2px solid #FFD700;color:#111827;}
+
 .no-results{text-align:center;padding:60px;color:var(--muted);font-size:16px;}
 .hidden{display:none!important;}
 
-.card-contact{font-size:11px;color:#666;margin-top:3px;}
-.version-badge {
-    display: inline-block;
-    background: #1e40af;
-    color: white;
-    font-size: 11px;
-    font-weight: 700;
-    padding: 3px 10px;
-    border-radius: 20px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 8px;
-}
+.card-contact{font-size:11px;color:#9ca3af;margin-top:3px;}
+.version-badge{display:inline-block;background:#1e40af;color:white;font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;}
+</style>
+
+<style id="pubity-white-theme">
+body{background:#f3f4f6!important;color:#111827!important;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif}
+.header,header{background:#ffffff!important;border-bottom:3px solid #FFD700!important;box-shadow:0 1px 4px rgba(0,0,0,.08)!important}
+.header h1,.title,h1{color:#111827!important}
+.stats-bar,.stats-row{background:#ffffff!important;border-bottom:1px solid #e5e7eb!important;color:#111827!important}
+.stat-value{color:#111827!important}
+.stat-label{color:#6b7280!important}
+.filters-bar,.filter-row-wrap,.filters-section{background:#ffffff!important;border-bottom:1px solid #e5e7eb!important;padding:12px 16px!important}
+.filter-btn{background:#f3f4f6!important;color:#374151!important;border:1px solid #e5e7eb!important;border-radius:20px!important;padding:5px 12px!important;font-size:13px!important;cursor:pointer;font-weight:500;transition:all .1s}
+.filter-btn.active,.filter-btn:is(.active){background:#FFD700!important;color:#111827!important;border-color:#FFD700!important;font-weight:700!important}
+.filter-label{color:#374151!important;font-size:12px!important;font-weight:600!important;text-transform:uppercase!important;letter-spacing:.05em!important}
+.card{background:#ffffff!important;border:1px solid #e5e7eb!important;border-radius:10px!important;box-shadow:0 1px 3px rgba(0,0,0,.06)!important;color:#111827!important}
+.card:hover{box-shadow:0 4px 14px rgba(0,0,0,.1)!important;transform:translateY(-1px);transition:all .15s}
+.card-brand,.card-title,.card-name{color:#111827!important;font-weight:700!important}
+.card-seller{color:#6b7280!important;font-weight:600!important}
+.card-metric,.metric-value{color:#111827!important;font-weight:700!important}
+.card-metric-label,.metric-label{color:#9ca3af!important;font-size:11px!important}
+.badge-won,.status-won,[data-status="won"] .badge{background:#dcfce7!important;color:#15803d!important}
+.badge-lost,.status-lost,[data-status="lost"] .badge{background:#fee2e2!important;color:#dc2626!important}
+.section-wrap{color:#111827!important}
+.section-h,.section-title h2,h2.section-heading{color:#111827!important;background:none!important;border-bottom:2px solid #FFD700!important;padding-bottom:6px!important}
+.charts-section,#charts-section{background:#ffffff!important;border-top:1px solid #e5e7eb!important}
+.chart-title{color:#111827!important}
+#no-results,#results-count,.results-count{color:#6b7280!important}
+.version-badge{background:#FFD700!important;color:#111827!important;font-weight:700!important}
 </style>
 </head>
 <body>
@@ -142,16 +175,17 @@ tr:hover td{background:#1a1a1a;}
 <div class="header-left">
 <div class="logo">PUBITY</div>
 <div>
-<div class="header h1" style="font-size:17px;font-weight:800;">Case Study Analyzer</div>
-<div class="header-sub">Giselle Onboarding Â· Closed Won &amp; Verbal Only Â· April 2026</div>
+<div style="font-size:17px;font-weight:800;color:#111827;">Case Study Analyzer</div>
+<div class="header-sub">Giselle Onboarding · Closed Won &amp; Verbal Only · April 2026</div>
 </div>
 </div>
-<div class="header-badge">ð Onboarding Resource
-  <div class="filter-row">
-<span class="filter-label">Status</span>
-<button class="filter-btn active" onclick="setFilter('status','all')">All</button>
-<button class="filter-btn" onclick="setFilter('status','won')">â Closed Won</button>
-<button class="filter-btn" onclick="setFilter('status','lost')">â Closed Lost</button>
+<div class="header-badge">
+<div class="header-badge-title">Onboarding Resource</div>
+<div class="filter-row" style="margin-top:2px;">
+<span class="filter-label" style="color:#555;">Status</span>
+<button class="status-filter-btn active" onclick="setFilter('status','all')">All</button>
+<button class="status-filter-btn" onclick="setFilter('status','won')">Closed Won</button>
+<button class="status-filter-btn" onclick="setFilter('status','lost')">Closed Lost</button>
 </div>
 </div>
 </div>
@@ -162,16 +196,15 @@ tr:hover td{background:#1a1a1a;}
 <div class="stat"><div class="stat-val">4.03%</div><div class="stat-label">Avg ER</div></div>
 <div class="stat"><div class="stat-val">+44PT</div><div class="stat-label">Best BLS Lift</div></div>
 <div class="stat"><div class="stat-val">517%</div><div class="stat-label">Best vs Target</div></div>
-<div class="stat"><div class="stat-val">UK + US</div><div class="stat-label">Markets</div></div>
+<div class="stat"><div class="stat-val">UK + ME</div><div class="stat-label">Markets</div></div>
 </div>
 <div class="filters-wrap">
 <div class="filter-row">
 <span class="filter-label">Region</span>
 <button class="filter-btn active" onclick="setFilter('region','all')">All</button>
-<button class="filter-btn" onclick="setFilter('region','uk')">ð¬ð§ UK</button>
-<button class="filter-btn" onclick="setFilter('region','us')">ðºð¸ US</button>
-<button class="filter-btn" onclick="setFilter('region','global')">ð Global</button>
-<button class="filter-btn" onclick="setFilter('region','me')">ð Middle East</button>
+<button class="filter-btn" onclick="setFilter('region','uk')">UK</button>
+<button class="filter-btn" onclick="setFilter('region','global')">Global</button>
+<button class="filter-btn" onclick="setFilter('region','me')">Middle East</button>
 <span class="results-count" id="results-count"></span>
 </div>
 <div class="filter-row">
@@ -183,37 +216,38 @@ tr:hover td{background:#1a1a1a;}
 <div class="filter-row">
 <span class="filter-label">Industry</span>
 <button class="filter-btn active" onclick="setFilter('industry','all')">All</button>
-<button class="filter-btn" onclick="setFilter('industry','qsr')">ð QSR / Food</button>
-<button class="filter-btn" onclick="setFilter('industry','gaming')">ð® Gaming</button>
-<button class="filter-btn" onclick="setFilter('industry','entertainment')">ð¬ Entertainment</button>
-<button class="filter-btn" onclick="setFilter('industry','tech')">ð» Tech / AI</button>
-<button class="filter-btn" onclick="setFilter('industry','beauty')">ð Beauty</button>
-<button class="filter-btn" onclick="setFilter('industry','middleeast')">ð Middle East</button>
-<button class="filter-btn" onclick="setFilter('industry','fmcg')">ð FMCG / CPG</button>
-<button class="filter-btn" onclick="setFilter('industry','sports')">â½ Sports / Betting</button>
-<button class="filter-btn" onclick="setFilter('industry','streaming')">ðº Streaming / TV</button>
-<button class="filter-btn" onclick="setFilter('industry','travel')">âï¸ Travel</button>
+<button class="filter-btn" onclick="setFilter('industry','qsr')">QSR / Food</button>
+<button class="filter-btn" onclick="setFilter('industry','gaming')">Gaming</button>
+<button class="filter-btn" onclick="setFilter('industry','entertainment')">Entertainment</button>
+<button class="filter-btn" onclick="setFilter('industry','tech')">Tech / AI</button>
+<button class="filter-btn" onclick="setFilter('industry','beauty')">Beauty</button>
+<button class="filter-btn" onclick="setFilter('industry','middleeast')">Middle East</button>
+<button class="filter-btn" onclick="setFilter('industry','fmcg')">FMCG / CPG</button>
+<button class="filter-btn" onclick="setFilter('industry','sports')">Sports / Betting</button>
+<button class="filter-btn" onclick="setFilter('industry','streaming')">Streaming / TV</button>
+<button class="filter-btn" onclick="setFilter('industry','travel')">Travel</button>
 </div>
 </div>
 <div class="main">
 <div class="charts-section" id="charts-section">
-<div class="chart-card"><div class="chart-title">ð Views by Industry (Millions) â Real PCA Data</div><div class="chart-wrap"><canvas id="barChart"></canvas></div></div>
-<div class="chart-card"><div class="chart-title">ð© Campaign Count by Industry</div><div class="chart-wrap"><canvas id="doughnutChart"></canvas></div></div>
+<div class="chart-card"><div class="chart-title">Views by Industry (Millions) — Real PCA Data</div><div class="chart-wrap"><canvas id="barChart"></canvas></div></div>
+<div class="chart-card"><div class="chart-title">Campaign Count by Industry</div><div class="chart-wrap"><canvas id="doughnutChart"></canvas></div></div>
 </div>
-<!-- âââââââââââââââââââââââââââââââââââââââ UK 2025 âââââââââââââââââââââââââââââââââââââââ -->
+
+<!-- UK 2025 -->
 <div class="section-wrap" data-sr="uk" data-sy="2025" id="sec-uk-2025">
 <div class="section-header">
-<span class="section-flag">ð¬ð§</span><span class="section-title">UK Campaigns â 2025</span>
+<span class="section-title">UK Campaigns — 2025</span>
 <span class="section-pill">Alex Kaars Sijpesteijn</span><div class="section-divider"></div>
 </div>
 <div class="cards-grid">
 <!-- Visit Dubai DSS -->
 <div class="card" data-industry="travel" data-region="me" data-status="won" data-year="2025">
 <div class="card-brand">Visit Dubai</div>
-<div class="card-campaign">Dubai Summer Surprises (DSS) â UK Targeting Test</div>
+<div class="card-campaign">Dubai Summer Surprises (DSS) — UK Targeting Test</div>
 <div class="card-meta">
 <span class="card-seller">Alex Kaars Sijpesteijn</span>
-<span class="card-date">ð JulâAug 2025</span>
+<span class="card-date">Jul–Aug 2025</span>
 <span class="tag-deal tag">$115K</span>
 </div>
 <div class="card-tags"><span class="tag tag-uk">UK</span><span class="tag tag-year">2025</span><span class="tag tag-industry">Middle East</span></div>
@@ -226,9 +260,9 @@ tr:hover td{background:#1a1a1a;}
 <div class="metric"><div class="metric-val b">97K</div><div class="metric-label">Poll Votes</div></div>
 </div>
 <details class="drop">
-<summary>ð PCA Summary â Real Data from SharePoint</summary>
+<summary>PCA Summary — Real Data from SharePoint</summary>
 <div class="drop-content">
-<div class="drop-section"><h4>Campaign Overview</h4><p>12 posts live between 14 Julâ18 Aug 2025. Kicked off with a headline post on Pubity (14.07) with 2 weeks of media spend, then BritishMemes grid posts, with stories running throughout across Pubity, Memezar and BritishMemes.</p></div>
+<div class="drop-section"><h4>Campaign Overview</h4><p>12 posts live between 14 Jul–18 Aug 2025. Kicked off with a headline post on Pubity (14.07) with 2 weeks of media spend, then BritishMemes grid posts, with stories running throughout across Pubity, Memezar and BritishMemes.</p></div>
 <div class="drop-section"><h4>Real Performance</h4>
 <div class="pm-row">
 <div class="pm"><strong>3.3M</strong><span>Pubity UK Views (143%)</span></div>
@@ -239,54 +273,53 @@ tr:hover td{background:#1a1a1a;}
 <div class="pm"><strong>11.32%</strong><span>Story Poll ER</span></div>
 </div>
 </div>
-<div class="drop-section"><h4>What Worked</h4><p>BritishMemes dramatically overdelivered at 517% of target â UK-native humour resonated perfectly. Adding polls to stories pivoted content from click-delivery to engagement, generating 97K votes. Story share on Pubity delivered 190% to target.</p></div>
-<div class="drop-section"><h4>Learnings</h4><p><strong>1. Use bespoke content</strong> focused on activities and adventure (audience uplift data showed these as key associations). <strong>2. Retargeting campaign</strong> needed â retargeting engaged users with click-specific assets would have driven better CTR without diluting organic content. <strong>3. Polls &gt; click-through stories</strong> â stories drove 11.32% ER with polls vs near-zero without.</p></div>
-<div class="drop-section"><h4>Brand Lift Study (BLS) â Sep 2025</h4>
+<div class="drop-section"><h4>What Worked</h4><p>BritishMemes dramatically overdelivered at 517% of target — UK-native humour resonated perfectly. Adding polls to stories pivoted content from click-delivery to engagement, generating 97K votes. Story share on Pubity delivered 190% to target.</p></div>
+<div class="drop-section"><h4>Learnings</h4><p><strong>1. Use bespoke content</strong> focused on activities and adventure (audience uplift data showed these as key associations). <strong>2. Retargeting campaign</strong> needed — retargeting engaged users with click-specific assets would have driven better CTR without diluting organic content. <strong>3. Polls &gt; click-through stories</strong> — stories drove 11.32% ER with polls vs near-zero without.</p></div>
+<div class="drop-section"><h4>Brand Lift Study (BLS) — Sep 2025</h4>
 <div class="pm-row">
-<div class="pm"><strong>+21PT</strong><span>Awareness (Dubai as holiday dest.) â 94%</span></div>
-<div class="pm"><strong>+19PT</strong><span>Consideration of Dubai â 71%</span></div>
-<div class="pm"><strong>+20PT</strong><span>Action Intent (book in next year) â 74%</span></div>
-<div class="pm"><strong>+20PT</strong><span>Agreeability: budget-friendly &amp; luxury â 80%</span></div>
+<div class="pm"><strong>+21PT</strong><span>Awareness (Dubai as holiday dest.) → 94%</span></div>
+<div class="pm"><strong>+19PT</strong><span>Consideration of Dubai → 71%</span></div>
+<div class="pm"><strong>+20PT</strong><span>Action Intent (book in next year) → 74%</span></div>
+<div class="pm"><strong>+20PT</strong><span>Agreeability: budget-friendly &amp; luxury → 80%</span></div>
 <div class="pm"><strong>15.8M</strong><span>Campaign Reach</span></div>
 <div class="pm"><strong>1.5M</strong><span>Forecasted Bookings</span></div>
 </div>
-<p style="margin-top:6px"><strong>"Adventure &amp; activities" messaging</strong> was the top driver of Consideration (+94% for those who associated Dubai with adventure). Grid posts outperformed stories for Action Intent and Advocacy. 25â34s and men over-indexed in bottom-funnel KPIs. Campaign delivered 2â3Ã above benchmark lifts across all metrics.</p>
+<p style="margin-top:6px"><strong>"Adventure &amp; activities" messaging</strong> was the top driver of Consideration (+94% for those who associated Dubai with adventure). Grid posts outperformed stories for Action Intent and Advocacy. 25–34s and men over-indexed in bottom-funnel KPIs. Campaign delivered 2–3x above benchmark lifts across all metrics.</p>
 </div>
 </div>
 </details>
 <div class="card-actions">
-<a class="btn btn-pca" href="https://pubitypgl.sharepoint.com/sites/Pubity/Shared%20Documents/Brand%20Partnerships%20Hub/Data%20%26%20Insights/Brand%20Uplift%20Studies/Campaign%20Results/Pubity%20x%20Visit%20Dubai%20-%20ThisThat%20BLS%2C%20Sep%2025%20-%20Pubity%20version.pdf" target="_blank">ð BLS Report</a>
-<a class="btn btn-pca" href="https://pubitypgl.sharepoint.com/sites/Pubity/Shared%20Documents/Brand%20Partnerships%20Hub/Client%20Services/Clients/Visit%20Dubai/186_VisitDubai_UKTargetingTest_UK_0425/7.%20Reporting%20%26%20PCA/Visit%20Dubai%20PCA%202025.pptx" target="_blank">ð PCA</a>
-<a class="btn btn-hs" href="https://app.hubspot.com/contacts/143333975/record/0-3/163449352418" target="_blank">ð HubSpot</a>
+<a class="btn btn-pca" href="https://pubitypgl.sharepoint.com/sites/Pubity/Shared%20Documents/Brand%20Partnerships%20Hub/Data%20%26%20Insights/Brand%20Uplift%20Studies/Campaign%20Results/Pubity%20x%20Visit%20Dubai%20-%20ThisThat%20BLS%2C%20Sep%2025%20-%20Pubity%20version.pdf" target="_blank">BLS Report</a>
+<a class="btn btn-pca" href="https://pubitypgl.sharepoint.com/sites/Pubity/Shared%20Documents/Brand%20Partnerships%20Hub/Client%20Services/Clients/Visit%20Dubai/186_VisitDubai_UKTargetingTest_UK_0425/7.%20Reporting%20%26%20PCA/Visit%20Dubai%20PCA%202025.pptx" target="_blank">PCA</a>
+<a class="btn btn-hs" href="https://app.hubspot.com/contacts/143333975/record/0-3/163449352418" target="_blank">HubSpot</a>
 </div>
 </div>
-<!-- Wuthering Heights - moved to 2026 but contract was 2025 so including here -->
 <!-- BBC Youth -->
 <div class="card" data-industry="streaming" data-region="uk" data-status="won" data-year="2025">
 <div class="card-brand">BBC</div>
 <div class="card-campaign">BBC Youth Awareness Campaign
-      <div class="card-actions">
-<a class="btn btn-hs" href="https://app.hubspot.com/contacts/143333975/record/0-3/317215594728" target="_blank">ð HubSpot Q4'25</a>
-<a class="btn btn-hs" href="https://app.hubspot.com/contacts/143333975/record/0-3/316495310036" target="_blank">ð HubSpot Q1'26</a>
+<div class="card-actions">
+<a class="btn btn-hs" href="https://app.hubspot.com/contacts/143333975/record/0-3/317215594728" target="_blank">HubSpot Q4'25</a>
+<a class="btn btn-hs" href="https://app.hubspot.com/contacts/143333975/record/0-3/316495310036" target="_blank">HubSpot Q1'26</a>
 </div>
 </div>
-<div class="card-meta"><span class="card-seller">Alex Kaars Sijpesteijn</span><span class="card-date">ð 2025</span><span class="tag-deal tag">$300K</span></div>
+<div class="card-meta"><span class="card-seller">Alex Kaars Sijpesteijn</span><span class="card-date">2025</span><span class="tag-deal tag">$300K</span></div>
 <div class="card-tags"><span class="tag tag-uk">UK</span><span class="tag tag-year">2025</span><span class="tag tag-industry">Streaming / TV</span></div>
 <div class="metrics">
 <div class="metric"><div class="metric-val y">2.8M</div><div class="metric-label">Views</div></div>
 <div class="metric"><div class="metric-val">3.8%</div><div class="metric-label">ER</div></div>
 </div>
-<div class="quote-block">"Pubity delivered exactly the youth reach we needed â the content felt native to the platform."</div>
+<div class="quote-block">"Pubity delivered exactly the youth reach we needed — the content felt native to the platform."</div>
 </div>
 <!-- Tombola -->
 <div class="card" data-industry="sports" data-region="uk" data-status="won" data-year="2025">
 <div class="card-brand">Tombola</div>
 <div class="card-campaign">Bingo &amp; Gaming Awareness
-      <div class="card-actions">
-<a class="btn btn-hs" href="https://app.hubspot.com/contacts/143333975/record/0-3/368828506317" target="_blank">ð HubSpot</a>
+<div class="card-actions">
+<a class="btn btn-hs" href="https://app.hubspot.com/contacts/143333975/record/0-3/368828506317" target="_blank">HubSpot</a>
 </div>
 </div>
-<div class="card-meta"><span class="card-seller">Alex Kaars Sijpesteijn</span><span class="card-date">ð 2025</span><span class="tag-deal tag">$10K</span></div>
+<div class="card-meta"><span class="card-seller">Alex Kaars Sijpesteijn</span><span class="card-date">2025</span><span class="tag-deal tag">$10K</span></div>
 <div class="card-tags"><span class="tag tag-uk">UK</span><span class="tag tag-year">2025</span><span class="tag tag-industry">Sports / Betting</span></div>
 <div class="metrics">
 <div class="metric"><div class="metric-val y">1.9M</div><div class="metric-label">Views</div></div>
@@ -297,11 +330,11 @@ tr:hover td{background:#1a1a1a;}
 <div class="card" data-industry="streaming" data-region="uk" data-status="won" data-year="2025">
 <div class="card-brand">ITV</div>
 <div class="card-campaign">ITV Show Launch
-      <div class="card-actions">
-<a class="btn btn-hs" href="https://app.hubspot.com/contacts/143333975/record/0-3/473516819672" target="_blank">ð HubSpot</a>
+<div class="card-actions">
+<a class="btn btn-hs" href="https://app.hubspot.com/contacts/143333975/record/0-3/473516819672" target="_blank">HubSpot</a>
 </div>
 </div>
-<div class="card-meta"><span class="card-seller">Alex Kaars Sijpesteijn</span><span class="card-date">ð 2025</span><span class="tag-deal tag">$760K</span></div>
+<div class="card-meta"><span class="card-seller">Alex Kaars Sijpesteijn</span><span class="card-date">2025</span><span class="tag-deal tag">$760K</span></div>
 <div class="card-tags"><span class="tag tag-uk">UK</span><span class="tag tag-year">2025</span><span class="tag tag-industry">Streaming / TV</span></div>
 <div class="metrics">
 <div class="metric"><div class="metric-val y">3.1M</div><div class="metric-label">Views</div></div>
@@ -312,11 +345,11 @@ tr:hover td{background:#1a1a1a;}
 <div class="card" data-industry="beauty" data-region="uk" data-status="won" data-year="2025">
 <div class="card-brand">Unilever / Dove</div>
 <div class="card-campaign">Dove Real Beauty Campaign
-      <div class="card-actions">
-<a class="btn btn-hs" href="https://app.hubspot.com/contacts/143333975/record/0-3/352864753855" target="_blank">ð HubSpot</a>
+<div class="card-actions">
+<a class="btn btn-hs" href="https://app.hubspot.com/contacts/143333975/record/0-3/352864753855" target="_blank">HubSpot</a>
 </div>
 </div>
-<div class="card-meta"><span class="card-seller">Alex Kaars Sijpesteijn</span><span class="card-date">ð 2025</span><span class="tag-deal tag">$540K</span></div>
+<div class="card-meta"><span class="card-seller">Alex Kaars Sijpesteijn</span><span class="card-date">2025</span><span class="tag-deal tag">$540K</span></div>
 <div class="card-tags"><span class="tag tag-uk">UK</span><span class="tag tag-year">2025</span><span class="tag tag-industry">Beauty</span></div>
 <div class="metrics">
 <div class="metric"><div class="metric-val y">2.2M</div><div class="metric-label">Views</div></div>
@@ -328,7 +361,7 @@ tr:hover td{background:#1a1a1a;}
 <div class="card" data-industry="fmcg" data-region="uk" data-status="won" data-year="2025">
 <div class="card-brand">Britvic / J2O</div>
 <div class="card-campaign">J2O Summer Social Campaign</div>
-<div class="card-meta"><span class="card-seller">Alex Kaars Sijpesteijn</span><span class="card-date">ð Summer 2025</span></div>
+<div class="card-meta"><span class="card-seller">Alex Kaars Sijpesteijn</span><span class="card-date">Summer 2025</span></div>
 <div class="card-tags"><span class="tag tag-uk">UK</span><span class="tag tag-year">2025</span><span class="tag tag-industry">FMCG / CPG</span></div>
 <div class="metrics">
 <div class="metric"><div class="metric-val y">1.6M</div><div class="metric-label">Views</div></div>
@@ -339,11 +372,11 @@ tr:hover td{background:#1a1a1a;}
 <div class="card" data-industry="fmcg" data-region="uk" data-status="won" data-year="2025">
 <div class="card-brand">Mondelez / Twirl</div>
 <div class="card-campaign">Twirl Orange Launch
-      <div class="card-actions">
-<a class="btn btn-hs" href="https://app.hubspot.com/contacts/143333975/record/0-3/380628921549" target="_blank">ð HubSpot</a>
+<div class="card-actions">
+<a class="btn btn-hs" href="https://app.hubspot.com/contacts/143333975/record/0-3/380628921549" target="_blank">HubSpot</a>
 </div>
 </div>
-<div class="card-meta"><span class="card-seller">Alex Kaars Sijpesteijn</span><span class="card-date">ð 2025</span><span class="tag-deal tag">$200K</span></div>
+<div class="card-meta"><span class="card-seller">Alex Kaars Sijpesteijn</span><span class="card-date">2025</span><span class="tag-deal tag">$200K</span></div>
 <div class="card-tags"><span class="tag tag-uk">UK</span><span class="tag tag-year">2025</span><span class="tag tag-industry">FMCG / CPG</span></div>
 <div class="metrics">
 <div class="metric"><div class="metric-val y">2.0M</div><div class="metric-label">Views</div></div>
@@ -354,11 +387,11 @@ tr:hover td{background:#1a1a1a;}
 <div class="card" data-industry="streaming" data-region="uk" data-status="won" data-year="2025">
 <div class="card-brand">Channel 4</div>
 <div class="card-campaign">Show Promotion Campaign
-      <div class="card-actions">
-<a class="btn btn-hs" href="https://app.hubspot.com/contacts/143333975/record/0-3/404451729601" target="_blank">ð HubSpot</a>
+<div class="card-actions">
+<a class="btn btn-hs" href="https://app.hubspot.com/contacts/143333975/record/0-3/404451729601" target="_blank">HubSpot</a>
 </div>
 </div>
-<div class="card-meta"><span class="card-seller">Alex Kaars Sijpesteijn</span><span class="card-date">ð 2025</span><span class="tag-deal tag">$100K</span></div>
+<div class="card-meta"><span class="card-seller">Alex Kaars Sijpesteijn</span><span class="card-date">2025</span><span class="tag-deal tag">$100K</span></div>
 <div class="card-tags"><span class="tag tag-uk">UK</span><span class="tag tag-year">2025</span><span class="tag tag-industry">Streaming / TV</span></div>
 <div class="metrics">
 <div class="metric"><div class="metric-val y">2.4M</div><div class="metric-label">Views</div></div>
@@ -367,20 +400,21 @@ tr:hover td{background:#1a1a1a;}
 </div>
 </div>
 </div>
-<!-- âââââââââââââââââââââââââââââââââââââââ UK 2026 âââââââââââââââââââââââââââââââââââââââ -->
+
+<!-- UK 2026 -->
 <div class="section-wrap" data-sr="uk" data-sy="2026" id="sec-uk-2026">
 <div class="section-header">
-<span class="section-flag">ð¬ð§</span><span class="section-title">UK Campaigns â 2026</span>
+<span class="section-title">UK Campaigns — 2026</span>
 <span class="section-pill">Alex Kaars Sijpesteijn</span><div class="section-divider"></div>
 </div>
 <div class="cards-grid">
-<!-- Wuthering Heights â­ -->
+<!-- Wuthering Heights -->
 <div class="card" data-industry="entertainment" data-region="uk" data-status="won" data-year="2026">
 <div class="card-brand">Warner Bros.</div>
-<div class="card-campaign">Wuthering Heights â UK Campaign</div>
+<div class="card-campaign">Wuthering Heights — UK Campaign</div>
 <div class="card-meta">
 <span class="card-seller">Myles</span>
-<span class="card-date">ð Feb 9â13, 2026</span>
+<span class="card-date">Feb 9–13, 2026</span>
 <span class="tag-deal tag">$55K</span>
 </div>
 <div class="card-tags"><span class="tag tag-uk">UK</span><span class="tag tag-year">2026</span><span class="tag tag-industry">Entertainment</span></div>
@@ -392,9 +426,9 @@ tr:hover td{background:#1a1a1a;}
 <div class="metric"><div class="metric-val">10.3K</div><div class="metric-label">Shares</div></div>
 </div>
 <details class="drop">
-<summary>ð PCA Summary â Real Data from SharePoint</summary>
+<summary>PCA Summary — Real Data from SharePoint</summary>
 <div class="drop-content">
-<div class="drop-section"><h4>Campaign Overview</h4><p>Pubity and Girlyzar collab grid posts for the Warner Bros Wuthering Heights UK release. Campaign ran Feb 9â13, 2026. Accounts: Pubity, Girlyzar, with story support.</p></div>
+<div class="drop-section"><h4>Campaign Overview</h4><p>Pubity and Girlyzar collab grid posts for the Warner Bros Wuthering Heights UK release. Campaign ran Feb 9–13, 2026. Accounts: Pubity, Girlyzar, with story support.</p></div>
 <div class="drop-section"><h4>Real Performance</h4>
 <div class="pm-row">
 <div class="pm"><strong>6.12M</strong><span>Total UK Views (117% KPI)</span></div>
@@ -409,305 +443,304 @@ tr:hover td{background:#1a1a1a;}
 </div>
 </details>
 <div class="card-actions">
-<a class="btn btn-pca" href="https://pubitypgl.sharepoint.com/sites/Pubity/Shared%20Documents/Brand%20Partnerships%20Hub/Client%20Services/Clients/Warner%20Bros/2026/292_wb_themummy_uk_0226/7.%20Reporting%20%26%20PCA/Pubity%20X%20Wuthering%20Heights%20Campaign%20Report7%5B100%5D.xlsx" target="_blank">ð Report</a>
-<a class="btn btn-mp" href="https://pubitypgl.sharepoint.com/sites/Pubity/Shared%20Documents/Brand%20Partnerships%20Hub/Client%20Services/Clients/Warner%20Bros/2026/251_warnerbros_wutheringheights_uk_0925/2.%20Media%20Plan/PubityGroup_WarnerBros_WutheringHeights_Oct2025%20(4).xlsx" target="_blank">ð Media Plan</a>
-<a class="btn btn-hs" href="https://app.hubspot.com/contacts/143333975/record/0-3/313386810556" target="_blank">ð HubSpot</a>
+<a class="btn btn-pca" href="https://pubitypgl.sharepoint.com/sites/Pubity/Shared%20Documents/Brand%20Partnerships%20Hub/Client%20Services/Clients/Warner%20Bros/2026/292_wb_themummy_uk_0226/7.%20Reporting%20%26%20PCA/Pubity%20X%20Wuthering%20Heights%20Campaign%20Report7%5B100%5D.xlsx" target="_blank">Report</a>
+<a class="btn btn-mp" href="https://pubitypgl.sharepoint.com/sites/Pubity/Shared%20Documents/Brand%20Partnerships%20Hub/Client%20Services/Clients/Warner%20Bros/2026/251_warnerbros_wutheringheights_uk_0925/2.%20Media%20Plan/PubityGroup_WarnerBros_WutheringHeights_Oct2025%20(4).xlsx" target="_blank">Media Plan</a>
+<a class="btn btn-hs" href="https://app.hubspot.com/contacts/143333975/record/0-3/313386810556" target="_blank">HubSpot</a>
 </div>
 </div>
 <!-- Lynx World Cup -->
 <div class="card" data-industry="fmcg" data-region="uk" data-status="won" data-year="2026">
 <div class="card-brand">Lynx (Unilever)</div>
 <div class="card-campaign">World Cup 2026 Activation</div>
-<div class="card-meta"><span class="card-seller">Alex Kaars Sijpesteijn</span><span class="card-date">ð Q2âQ3 2026</span><span class="tag-deal tag">$900K</span></div>
+<div class="card-meta"><span class="card-seller">Alex Kaars Sijpesteijn</span><span class="card-date">Q2–Q3 2026</span><span class="tag-deal tag">$900K</span></div>
 <div class="card-tags"><span class="tag tag-uk">UK</span><span class="tag tag-year">2026</span><span class="tag tag-industry">FMCG / CPG</span></div>
 <div class="metrics">
-<div class="metric"><div class="metric-val y">Â£900K</div><div class="metric-label">Deal Value</div></div>
+<div class="metric"><div class="metric-val y">£900K</div><div class="metric-label">Deal Value</div></div>
 <div class="metric"><div class="metric-val o">Active</div><div class="metric-label">Status</div></div>
 </div>
-<div class="quote-block">Pubity's largest UK deal to date. Multi-platform World Cup activation across Q2âQ3 2026 tied to tournament moments. Flagship partnership.</div>
+<div class="quote-block">Pubity's largest UK deal to date. Multi-platform World Cup activation across Q2–Q3 2026 tied to tournament moments. Flagship partnership.</div>
 <div class="card-actions">
-<a class="btn btn-hs" href="https://app.hubspot.com/contacts/143333975/record/0-3/352872307929" target="_blank">ð HubSpot</a>
+<a class="btn btn-hs" href="https://app.hubspot.com/contacts/143333975/record/0-3/352872307929" target="_blank">HubSpot</a>
 </div>
 </div>
 <!-- Sure World Cup -->
 <div class="card" data-industry="fmcg" data-region="uk" data-status="won" data-year="2026">
 <div class="card-brand">Sure (Unilever)</div>
 <div class="card-campaign">World Cup 2026 Activation</div>
-<div class="card-meta"><span class="card-seller">Alex Kaars Sijpesteijn</span><span class="card-date">ð Q2âQ3 2026</span><span class="tag-deal tag">$620K</span></div>
+<div class="card-meta"><span class="card-seller">Alex Kaars Sijpesteijn</span><span class="card-date">Q2–Q3 2026</span><span class="tag-deal tag">$620K</span></div>
 <div class="card-tags"><span class="tag tag-uk">UK</span><span class="tag tag-year">2026</span><span class="tag tag-industry">FMCG / CPG</span></div>
 <div class="metrics">
-<div class="metric"><div class="metric-val y">Â£620K</div><div class="metric-label">Deal Value</div></div>
+<div class="metric"><div class="metric-val y">£620K</div><div class="metric-label">Deal Value</div></div>
 <div class="metric"><div class="metric-val o">Active</div><div class="metric-label">Status</div></div>
 </div>
 <div class="card-actions">
-<a class="btn btn-hs" href="https://app.hubspot.com/contacts/143333975/record/0-3/354363915457" target="_blank">ð HubSpot</a>
+<a class="btn btn-hs" href="https://app.hubspot.com/contacts/143333975/record/0-3/354363915457" target="_blank">HubSpot</a>
 </div>
 </div>
 <!-- Ladbrokes -->
 <div class="card" data-industry="sports" data-region="uk" data-status="won" data-year="2026">
 <div class="card-brand">Ladbrokes</div>
 <div class="card-campaign">Sports Betting Campaign 2026
-      <div class="card-actions">
-<a class="btn btn-hs" href="https://app.hubspot.com/contacts/143333975/record/0-3/466490147004" target="_blank">ð HubSpot</a>
+<div class="card-actions">
+<a class="btn btn-hs" href="https://app.hubspot.com/contacts/143333975/record/0-3/466490147004" target="_blank">HubSpot</a>
 </div>
 </div>
-<div class="card-meta"><span class="card-seller">Alex Kaars Sijpesteijn</span><span class="card-date">ð 2026</span><span class="tag-deal tag">$400K</span></div>
+<div class="card-meta"><span class="card-seller">Alex Kaars Sijpesteijn</span><span class="card-date">2026</span><span class="tag-deal tag">$400K</span></div>
 <div class="card-tags"><span class="tag tag-uk">UK</span><span class="tag tag-year">2026</span><span class="tag tag-industry">Sports / Betting</span></div>
-<div class="metrics"><div class="metric"><div class="metric-val y">Â£400K</div><div class="metric-label">Deal Value</div></div></div>
+<div class="metrics"><div class="metric"><div class="metric-val y">£400K</div><div class="metric-label">Deal Value</div></div></div>
 </div>
 <!-- Carlsberg -->
 <div class="card" data-industry="fmcg" data-region="uk" data-status="won" data-year="2026">
 <div class="card-brand">Carlsberg</div>
 <div class="card-campaign">World Cup Beer Campaign
-      <div class="card-actions">
-<a class="btn btn-hs" href="https://app.hubspot.com/contacts/143333975/record/0-3/355031254261" target="_blank">ð HubSpot</a>
+<div class="card-actions">
+<a class="btn btn-hs" href="https://app.hubspot.com/contacts/143333975/record/0-3/355031254261" target="_blank">HubSpot</a>
 </div>
 </div>
-<div class="card-meta"><span class="card-seller">Alex Kaars Sijpesteijn</span><span class="card-date">ð Q2âQ3 2026</span><span class="tag-deal tag">$200K</span></div>
+<div class="card-meta"><span class="card-seller">Alex Kaars Sijpesteijn</span><span class="card-date">Q2–Q3 2026</span><span class="tag-deal tag">$200K</span></div>
 <div class="card-tags"><span class="tag tag-uk">UK</span><span class="tag tag-year">2026</span><span class="tag tag-industry">FMCG / CPG</span></div>
-<div class="metrics"><div class="metric"><div class="metric-val y">Â£218K</div><div class="metric-label">Deal Value</div></div></div>
+<div class="metrics"><div class="metric"><div class="metric-val y">£218K</div><div class="metric-label">Deal Value</div></div></div>
 </div>
 <!-- Muller -->
 <div class="card" data-industry="fmcg" data-region="uk" data-status="won" data-year="2026">
-<div class="card-brand">MÃ¼ller</div>
+<div class="card-brand">Müller</div>
 <div class="card-campaign">Dairy Product Campaign 2026
-      <div class="card-actions">
-<a class="btn btn-hs" href="https://app.hubspot.com/contacts/143333975/record/0-3/437768447189" target="_blank">ð HubSpot</a>
+<div class="card-actions">
+<a class="btn btn-hs" href="https://app.hubspot.com/contacts/143333975/record/0-3/437768447189" target="_blank">HubSpot</a>
 </div>
 </div>
-<div class="card-meta"><span class="card-seller">Alex Kaars Sijpesteijn</span><span class="card-date">ð 2026</span><span class="tag-deal tag">$125K</span></div>
+<div class="card-meta"><span class="card-seller">Alex Kaars Sijpesteijn</span><span class="card-date">2026</span><span class="tag-deal tag">$125K</span></div>
 <div class="card-tags"><span class="tag tag-uk">UK</span><span class="tag tag-year">2026</span><span class="tag tag-industry">FMCG / CPG</span></div>
-<div class="metrics"><div class="metric"><div class="metric-val y">Â£280K</div><div class="metric-label">Deal Value</div></div></div>
+<div class="metrics"><div class="metric"><div class="metric-val y">£280K</div><div class="metric-label">Deal Value</div></div></div>
 </div>
 <!-- Britvic Tango -->
 <div class="card" data-industry="fmcg" data-region="uk" data-status="won" data-year="2026">
 <div class="card-brand">Britvic / Tango</div>
 <div class="card-campaign">Tango Summer Campaign 2026
-      <div class="card-actions">
-<a class="btn btn-hs" href="https://app.hubspot.com/contacts/143333975/record/0-3/180288836855" target="_blank">ð HubSpot</a>
+<div class="card-actions">
+<a class="btn btn-hs" href="https://app.hubspot.com/contacts/143333975/record/0-3/180288836855" target="_blank">HubSpot</a>
 </div>
 </div>
-<div class="card-meta"><span class="card-seller">Alex Kaars Sijpesteijn</span><span class="card-date">ð Summer 2026</span><span class="tag-deal tag">$234K</span></div>
+<div class="card-meta"><span class="card-seller">Alex Kaars Sijpesteijn</span><span class="card-date">Summer 2026</span><span class="tag-deal tag">$234K</span></div>
 <div class="card-tags"><span class="tag tag-uk">UK</span><span class="tag tag-year">2026</span><span class="tag tag-industry">FMCG / CPG</span></div>
-<div class="metrics"><div class="metric"><div class="metric-val y">Â£270K</div><div class="metric-label">Deal Value</div></div></div>
+<div class="metrics"><div class="metric"><div class="metric-val y">£270K</div><div class="metric-label">Deal Value</div></div></div>
 </div>
 <!-- WB Mummy -->
 <div class="card" data-industry="entertainment" data-region="uk" data-status="won" data-year="2026">
 <div class="card-brand">Warner Bros.</div>
-<div class="card-campaign">The Mummy â UK Release
-      <div class="card-actions">
-<a class="btn btn-hs" href="https://app.hubspot.com/contacts/143333975/record/0-3/474609151203" target="_blank">ð HubSpot</a>
+<div class="card-campaign">The Mummy — UK Release
+<div class="card-actions">
+<a class="btn btn-hs" href="https://app.hubspot.com/contacts/143333975/record/0-3/474609151203" target="_blank">HubSpot</a>
 </div>
 </div>
-<div class="card-meta"><span class="card-seller">Alex Kaars Sijpesteijn</span><span class="card-date">ð Feb 2026</span><span class="tag-deal tag">$90K</span></div>
+<div class="card-meta"><span class="card-seller">Alex Kaars Sijpesteijn</span><span class="card-date">Feb 2026</span><span class="tag-deal tag">$90K</span></div>
 <div class="card-tags"><span class="tag tag-uk">UK</span><span class="tag tag-year">2026</span><span class="tag tag-industry">Entertainment</span></div>
-<div class="metrics"><div class="metric"><div class="metric-val y">Â£90K</div><div class="metric-label">Deal Value</div></div></div>
+<div class="metrics"><div class="metric"><div class="metric-val y">£90K</div><div class="metric-label">Deal Value</div></div></div>
 </div>
 <!-- L'Oreal NYX -->
 <div class="card" data-industry="beauty" data-region="uk" data-status="won" data-year="2026">
-<div class="card-brand">L'OrÃ©al / NYX</div>
+<div class="card-brand">L'Oréal / NYX</div>
 <div class="card-campaign">NYX UK Beauty Campaign</div>
-<div class="card-meta"><span class="card-seller">Alex Kaars Sijpesteijn</span><span class="card-date">ð 2026</span><span class="tag-deal tag">Â£159K</span></div>
+<div class="card-meta"><span class="card-seller">Alex Kaars Sijpesteijn</span><span class="card-date">2026</span><span class="tag-deal tag">£159K</span></div>
 <div class="card-tags"><span class="tag tag-uk">UK</span><span class="tag tag-year">2026</span><span class="tag tag-industry">Beauty</span></div>
-<div class="metrics"><div class="metric"><div class="metric-val y">Â£159K</div><div class="metric-label">Deal Value</div></div></div>
+<div class="metrics"><div class="metric"><div class="metric-val y">£159K</div><div class="metric-label">Deal Value</div></div></div>
 </div>
 <!-- HBO HODS3 -->
 <div class="card" data-industry="streaming" data-region="uk" data-status="won" data-year="2026">
 <div class="card-brand">HBO</div>
 <div class="card-campaign">House of the Dragon S3
-      <div class="card-actions">
-<a class="btn btn-hs" href="https://app.hubspot.com/contacts/143333975/record/0-3/494058732786" target="_blank">ð HubSpot</a>
+<div class="card-actions">
+<a class="btn btn-hs" href="https://app.hubspot.com/contacts/143333975/record/0-3/494058732786" target="_blank">HubSpot</a>
 </div>
 </div>
-<div class="card-meta"><span class="card-seller">Alex Kaars Sijpesteijn</span><span class="card-date">ð 2026</span><span class="tag-deal tag">$50K</span></div>
+<div class="card-meta"><span class="card-seller">Alex Kaars Sijpesteijn</span><span class="card-date">2026</span><span class="tag-deal tag">$50K</span></div>
 <div class="card-tags"><span class="tag tag-uk">UK</span><span class="tag tag-year">2026</span><span class="tag tag-industry">Streaming / TV</span></div>
-<div class="metrics"><div class="metric"><div class="metric-val y">Â£50K</div><div class="metric-label">Deal Value</div></div></div>
+<div class="metrics"><div class="metric"><div class="metric-val y">£50K</div><div class="metric-label">Deal Value</div></div></div>
 </div>
-<!-- L'OrÃ©al NYX Simpsons -->
+<!-- L'Oréal NYX Simpsons -->
 <div class="card" data-industry="beauty" data-region="uk" data-status="won" data-year="2026">
-<div class="card-brand">L'OrÃ©al / NYX</div>
-<div class="card-campaign">NYX Ã The Simpsons
-      <div class="card-actions">
-<a class="btn btn-hs" href="https://app.hubspot.com/contacts/143333975/record/0-3/439462618352" target="_blank">ð HubSpot</a>
+<div class="card-brand">L'Oréal / NYX</div>
+<div class="card-campaign">NYX x The Simpsons
+<div class="card-actions">
+<a class="btn btn-hs" href="https://app.hubspot.com/contacts/143333975/record/0-3/439462618352" target="_blank">HubSpot</a>
 </div>
 </div>
-<div class="card-meta"><span class="card-seller">Alex Kaars Sijpesteijn</span><span class="card-date">ð Apr 2026</span><span class="tag-deal tag">$159K</span></div>
+<div class="card-meta"><span class="card-seller">Alex Kaars Sijpesteijn</span><span class="card-date">Apr 2026</span><span class="tag-deal tag">$159K</span></div>
 <div class="card-tags"><span class="tag tag-uk">UK</span><span class="tag tag-year">2026</span><span class="tag tag-industry">Beauty</span></div>
 <div class="metrics">
 <div class="metric"><div class="metric-val o">KPI</div><div class="metric-label">Guaranteed Impressions</div></div>
 </div>
 <div class="card-actions">
-<a class="btn btn-pca" href="https://pubitypgl.sharepoint.com/sites/Pubity/Shared%20Documents/Forms/AllItems.aspx?id=%2Fsites%2FPubity%2FShared%20Documents%2FBrand%20Partnerships%20Hub%2FClient%20Services%2FClients%2FNYX%2Fxx%5Floreal%5Fnyxxsimpsons%5Fuk%5F0126&amp;viewid=5abcc180%2D5e2a%2D4fb8%2Daa9e%2D5e6a55054936" target="_blank">ð SharePoint</a>
-<a class="btn btn-deck" href="https://docs.google.com/presentation/d/1kGe_zt3HSQFQ-8_UuFJSIck1kLtlidfO-z9mctYDZMo/edit" target="_blank">ð¬ Pitch</a>
+<a class="btn btn-pca" href="https://pubitypgl.sharepoint.com/sites/Pubity/Shared%20Documents/Forms/AllItems.aspx?id=%2Fsites%2FPubity%2FShared%20Documents%2FBrand%20Partnerships%20Hub%2FClient%20Services%2FClients%2FNYX%2Fxx%5Floreal%5Fnyxxsimpsons%5Fuk%5F0126&amp;viewid=5abcc180%2D5e2a%2D4fb8%2Daa9e%2D5e6a55054936" target="_blank">SharePoint</a>
+<a class="btn btn-deck" href="https://docs.google.com/presentation/d/1kGe_zt3HSQFQ-8_UuFJSIck1kLtlidfO-z9mctYDZMo/edit" target="_blank">Pitch</a>
 </div>
 </div>
-<!-- Warner Bros The Mummy (additional entry) -->
+<!-- WB Mummy Amplified -->
 <div class="card" data-industry="entertainment" data-region="uk" data-status="won" data-year="2026">
 <div class="card-brand">Warner Bros.</div>
-<div class="card-campaign">The Mummy â Amplified
-      <div class="card-actions">
-<a class="btn btn-hs" href="https://app.hubspot.com/contacts/143333975/record/0-3/474609151203" target="_blank">ð HubSpot</a>
+<div class="card-campaign">The Mummy — Amplified
+<div class="card-actions">
+<a class="btn btn-hs" href="https://app.hubspot.com/contacts/143333975/record/0-3/474609151203" target="_blank">HubSpot</a>
 </div>
 </div>
-<div class="card-meta"><span class="card-seller">Alex Kaars Sijpesteijn</span><span class="card-date">ð Apr 2026</span><span class="tag-deal tag">$90K</span></div>
+<div class="card-meta"><span class="card-seller">Alex Kaars Sijpesteijn</span><span class="card-date">Apr 2026</span><span class="tag-deal tag">$90K</span></div>
 <div class="card-tags"><span class="tag tag-uk">UK</span><span class="tag tag-year">2026</span><span class="tag tag-industry">Entertainment</span></div>
 <div class="metrics">
 <div class="metric"><div class="metric-val y">10.8M</div><div class="metric-label">Guaranteed Impressions</div></div>
 </div>
 <div class="card-actions">
-<a class="btn btn-pca" href="https://pubitypgl.sharepoint.com/sites/Pubity/Shared%20Documents/Forms/AllItems.aspx?id=%2Fsites%2FPubity%2FShared%20Documents%2FBrand%20Partnerships%20Hub%2FClient%20Services%2FClients%2FWarner%20Bros%2F2026%2F292%5Fwb%5Fthemummy%5Fuk%5F0226" target="_blank">ð SharePoint</a>
+<a class="btn btn-pca" href="https://pubitypgl.sharepoint.com/sites/Pubity/Shared%20Documents/Forms/AllItems.aspx?id=%2Fsites%2FPubity%2FShared%20Documents%2FBrand%20Partnerships%20Hub%2FClient%20Services%2FClients%2FWarner%20Bros%2F2026%2F292%5Fwb%5Fthemummy%5Fuk%5F0226" target="_blank">SharePoint</a>
 </div>
 </div>
-<!-- Wuthering Heights (update) - already exists but adding wrap deck link version -->
+<!-- Wuthering Heights Post Analysis -->
 <div class="card" data-industry="entertainment" data-region="uk" data-status="won" data-year="2026">
 <div class="card-brand">Warner Bros.</div>
-<div class="card-campaign">Wuthering Heights â Post Analysis
-      <div class="card-actions">
-<a class="btn btn-hs" href="https://app.hubspot.com/contacts/143333975/record/0-3/313386810556" target="_blank">ð HubSpot</a>
+<div class="card-campaign">Wuthering Heights — Post Analysis
+<div class="card-actions">
+<a class="btn btn-hs" href="https://app.hubspot.com/contacts/143333975/record/0-3/313386810556" target="_blank">HubSpot</a>
 </div>
 </div>
-<div class="card-meta"><span class="card-seller">Alex Kaars Sijpesteijn</span><span class="card-date">ð Feb 2026</span><span class="tag-deal tag">$55K</span></div>
+<div class="card-meta"><span class="card-seller">Alex Kaars Sijpesteijn</span><span class="card-date">Feb 2026</span><span class="tag-deal tag">$55K</span></div>
 <div class="card-tags"><span class="tag tag-uk">UK</span><span class="tag tag-year">2026</span><span class="tag tag-industry">Entertainment</span></div>
 <div class="metrics">
 <div class="metric"><div class="metric-val y">5.25M</div><div class="metric-label">Estimated Impressions</div></div>
 </div>
 <div class="card-actions">
-<a class="btn btn-pca" href="https://pubitypgl.sharepoint.com/sites/Pubity/Shared%20Documents/Forms/AllItems.aspx?id=%2Fsites%2FPubity%2FShared%20Documents%2FBrand%20Partnerships%20Hub%2FClient%20Services%2FClients%2FWarner%20Bros%2F2026%2F251%5Fwarnerbros%5Fwutheringheights%5Fuk%5F0925" target="_blank">ð SharePoint</a>
-<a class="btn btn-mp" href="https://pubitypgl.sharepoint.com/:u:/r/sites/Pubity/Shared%20Documents/Brand%20Partnerships%20Hub/Client%20Services/Clients/Warner%20Bros/2026/292_wb_themummy_uk_0226/7.%20Reporting%20%26%20PCA/PCA.url" target="_blank">ð Wrap</a>
+<a class="btn btn-pca" href="https://pubitypgl.sharepoint.com/sites/Pubity/Shared%20Documents/Forms/AllItems.aspx?id=%2Fsites%2FPubity%2FShared%20Documents%2FBrand%20Partnerships%20Hub%2FClient%20Services%2FClients%2FWarner%20Bros%2F2026%2F251%5Fwarnerbros%5Fwutheringheights%5Fuk%5F0925" target="_blank">SharePoint</a>
+<a class="btn btn-mp" href="https://pubitypgl.sharepoint.com/:u:/r/sites/Pubity/Shared%20Documents/Brand%20Partnerships%20Hub/Client%20Services/Clients/Warner%20Bros/2026/292_wb_themummy_uk_0226/7.%20Reporting%20%26%20PCA/PCA.url" target="_blank">Wrap</a>
 </div>
 </div>
 <!-- Paramount Geordie Shore -->
 <div class="card" data-industry="entertainment" data-region="uk" data-status="won" data-year="2026">
 <div class="card-brand">Paramount+</div>
 <div class="card-campaign">Geordie Shore Campaign
-      <div class="card-actions">
-<a class="btn btn-hs" href="https://app.hubspot.com/contacts/143333975/record/0-3/402750384332" target="_blank">ð HubSpot</a>
+<div class="card-actions">
+<a class="btn btn-hs" href="https://app.hubspot.com/contacts/143333975/record/0-3/402750384332" target="_blank">HubSpot</a>
 </div>
 </div>
-<div class="card-meta"><span class="card-seller">Alex Kaars Sijpesteijn</span><span class="card-date">ð Jan 2026</span><span class="tag-deal tag">$50K</span></div>
+<div class="card-meta"><span class="card-seller">Alex Kaars Sijpesteijn</span><span class="card-date">Jan 2026</span><span class="tag-deal tag">$50K</span></div>
 <div class="card-tags"><span class="tag tag-uk">UK</span><span class="tag tag-year">2026</span><span class="tag tag-industry">Entertainment</span></div>
 <div class="metrics">
 <div class="metric"><div class="metric-val y">6.3M</div><div class="metric-label">Guaranteed Impressions</div></div>
 </div>
 <div class="card-actions">
-<a class="btn btn-pca" href="https://pubitypgl.sharepoint.com/:f:/r/sites/Pubity/Shared%20Documents/Brand%20Partnerships%20Hub/Client%20Services/Clients/Paramount%20Plus/2026/xx_publicis_geordieshore_uk_1225" target="_blank">ð SharePoint</a>
-<a class="btn btn-deck" href="https://docs.google.com/presentation/d/17PUXKZTNZJ2oKropQmtInY20LUYWTjI2inbMiut5ubM/edit" target="_blank">ð¬ Pitch</a>
-<a class="btn btn-mp" href="https://pubitypgl.sharepoint.com/:x:/r/sites/Pubity/Shared%20Documents/Brand%20Partnerships%20Hub/Client%20Services/Clients/Paramount%20Plus/2026/265_publicis_geordieshore_uk_1225/8.%20Reporting%20%26%20PCA/Pubity%20Report_ParamountGeordieShore_Jan26.xlsx" target="_blank">ð Report</a>
+<a class="btn btn-pca" href="https://pubitypgl.sharepoint.com/:f:/r/sites/Pubity/Shared%20Documents/Brand%20Partnerships%20Hub/Client%20Services/Clients/Paramount%20Plus/2026/xx_publicis_geordieshore_uk_1225" target="_blank">SharePoint</a>
+<a class="btn btn-deck" href="https://docs.google.com/presentation/d/17PUXKZTNZJ2oKropQmtInY20LUYWTjI2inbMiut5ubM/edit" target="_blank">Pitch</a>
+<a class="btn btn-mp" href="https://pubitypgl.sharepoint.com/:x:/r/sites/Pubity/Shared%20Documents/Brand%20Partnerships%20Hub/Client%20Services/Clients/Paramount%20Plus/2026/265_publicis_geordieshore_uk_1225/8.%20Reporting%20%26%20PCA/Pubity%20Report_ParamountGeordieShore_Jan26.xlsx" target="_blank">Report</a>
 </div>
 </div>
-<!-- Paramount Scream 7 (UK version) -->
+<!-- Paramount Scream 7 -->
 <div class="card" data-industry="entertainment" data-region="uk" data-status="won" data-year="2026">
 <div class="card-brand">Paramount</div>
-<div class="card-campaign">Scream 7 â UK Campaign
-      <div class="card-actions">
-<a class="btn btn-hs" href="https://app.hubspot.com/contacts/143333975/record/0-3/347540880593" target="_blank">ð HubSpot</a>
+<div class="card-campaign">Scream 7 — UK Campaign
+<div class="card-actions">
+<a class="btn btn-hs" href="https://app.hubspot.com/contacts/143333975/record/0-3/347540880593" target="_blank">HubSpot</a>
 </div>
 </div>
-<div class="card-meta"><span class="card-seller">Alex Kaars Sijpesteijn</span><span class="card-date">ð FebâMar 2026</span><span class="tag-deal tag">$35K</span></div>
+<div class="card-meta"><span class="card-seller">Alex Kaars Sijpesteijn</span><span class="card-date">Feb–Mar 2026</span><span class="tag-deal tag">$35K</span></div>
 <div class="card-tags"><span class="tag tag-uk">UK</span><span class="tag tag-year">2026</span><span class="tag tag-industry">Entertainment</span></div>
 <div class="metrics">
 <div class="metric"><div class="metric-val o">KPI</div><div class="metric-label">Guaranteed Impressions</div></div>
 </div>
 <div class="card-actions">
-<a class="btn btn-pca" href="https://pubitypgl.sharepoint.com/:f:/r/sites/Pubity/Shared%20Documents/Brand%20Partnerships%20Hub/Client%20Services/Clients/Paramount/2026/255_Paramount_Scream7_Global_2026" target="_blank">ð SharePoint</a>
-<a class="btn btn-deck" href="https://docs.google.com/presentation/d/11IJC-pdpY5EW5Kw3klnzDxHPe8FBRIsDQ-VYHQ_yD6I/edit" target="_blank">ð¬ Pitch</a>
+<a class="btn btn-pca" href="https://pubitypgl.sharepoint.com/:f:/r/sites/Pubity/Shared%20Documents/Brand%20Partnerships%20Hub/Client%20Services/Clients/Paramount/2026/255_Paramount_Scream7_Global_2026" target="_blank">SharePoint</a>
+<a class="btn btn-deck" href="https://docs.google.com/presentation/d/11IJC-pdpY5EW5Kw3klnzDxHPe8FBRIsDQ-VYHQ_yD6I/edit" target="_blank">Pitch</a>
 </div>
 </div>
 <!-- Universal Mario -->
 <div class="card" data-industry="entertainment" data-region="uk" data-status="won" data-year="2026">
 <div class="card-brand">Universal</div>
 <div class="card-campaign">The Super Mario Bros. Movie
-      <div class="card-actions">
-<a class="btn btn-hs" href="https://app.hubspot.com/contacts/143333975/record/0-3/428658361586" target="_blank">ð HubSpot</a>
+<div class="card-actions">
+<a class="btn btn-hs" href="https://app.hubspot.com/contacts/143333975/record/0-3/428658361586" target="_blank">HubSpot</a>
 </div>
 </div>
-<div class="card-meta"><span class="card-seller">Alex Kaars Sijpesteijn</span><span class="card-date">ð Mar 2026</span><span class="tag-deal tag">$35K</span></div>
+<div class="card-meta"><span class="card-seller">Alex Kaars Sijpesteijn</span><span class="card-date">Mar 2026</span><span class="tag-deal tag">$35K</span></div>
 <div class="card-tags"><span class="tag tag-uk">UK</span><span class="tag tag-year">2026</span><span class="tag tag-industry">Entertainment</span></div>
 <div class="metrics">
 <div class="metric"><div class="metric-val y">3.58M</div><div class="metric-label">Guaranteed Impressions</div></div>
 </div>
 <div class="card-actions">
-<a class="btn btn-pca" href="https://pubitypgl.sharepoint.com/sites/Pubity/Shared%20Documents/Forms/AllItems.aspx?id=%2Fsites%2FPubity%2FShared%20Documents%2FBrand%20Partnerships%20Hub%2FClient%20Services%2FClients%2FUniversal%2F284%5Funiversal%5Fmario%5Fuk%5F0226" target="_blank">ð SharePoint</a>
+<a class="btn btn-pca" href="https://pubitypgl.sharepoint.com/sites/Pubity/Shared%20Documents/Forms/AllItems.aspx?id=%2Fsites%2FPubity%2FShared%20Documents%2FBrand%20Partnerships%20Hub%2FClient%20Services%2FClients%2FUniversal%2F284%5Funiversal%5Fmario%5Fuk%5F0226" target="_blank">SharePoint</a>
 </div>
 </div>
 <!-- Universal You Me and Tuscany -->
 <div class="card" data-industry="entertainment" data-region="uk" data-status="won" data-year="2026">
 <div class="card-brand">Universal</div>
 <div class="card-campaign">You, Me and Tuscany
-      <div class="card-actions">
-<a class="btn btn-hs" href="https://app.hubspot.com/contacts/143333975/record/0-3/473244550383" target="_blank">ð HubSpot</a>
+<div class="card-actions">
+<a class="btn btn-hs" href="https://app.hubspot.com/contacts/143333975/record/0-3/473244550383" target="_blank">HubSpot</a>
 </div>
 </div>
-<div class="card-meta"><span class="card-seller">Alex Kaars Sijpesteijn</span><span class="card-date">ð MarâApr 2026</span><span class="tag-deal tag">$35K</span></div>
+<div class="card-meta"><span class="card-seller">Alex Kaars Sijpesteijn</span><span class="card-date">Mar–Apr 2026</span><span class="tag-deal tag">$35K</span></div>
 <div class="card-tags"><span class="tag tag-uk">UK</span><span class="tag tag-year">2026</span><span class="tag tag-industry">Entertainment</span></div>
 <div class="metrics">
 <div class="metric"><div class="metric-val y">3.09M</div><div class="metric-label">Guaranteed Impressions</div></div>
 </div>
 <div class="card-actions">
-<a class="btn btn-pca" href="https://pubitypgl.sharepoint.com/sites/Pubity/Shared%20Documents/Forms/AllItems.aspx?id=%2Fsites%2FPubity%2FShared%20Documents%2FBrand%20Partnerships%20Hub%2FClient%20Services%2FClients%2FUniversal%2Fxx%5Funiversal%5Fyoumeandtuscany%5Fuk%5F0226" target="_blank">ð SharePoint</a>
+<a class="btn btn-pca" href="https://pubitypgl.sharepoint.com/sites/Pubity/Shared%20Documents/Forms/AllItems.aspx?id=%2Fsites%2FPubity%2FShared%20Documents%2FBrand%20Partnerships%20Hub%2FClient%20Services%2FClients%2FUniversal%2Fxx%5Funiversal%5Fyoumeandtuscany%5Fuk%5F0226" target="_blank">SharePoint</a>
 </div>
 </div>
 <!-- Meta AI -->
 <div class="card" data-industry="tech" data-region="uk" data-status="won" data-year="2026">
 <div class="card-brand">Meta</div>
 <div class="card-campaign">Meta AI Campaign
-      <div class="card-actions">
-<a class="btn btn-hs" href="https://app.hubspot.com/contacts/143333975/record/0-3/404189079777" target="_blank">ð HubSpot</a>
+<div class="card-actions">
+<a class="btn btn-hs" href="https://app.hubspot.com/contacts/143333975/record/0-3/404189079777" target="_blank">HubSpot</a>
 </div>
 </div>
-<div class="card-meta"><span class="card-seller">Alex Kaars Sijpesteijn</span><span class="card-date">ð Dec 2025</span><span class="tag-deal tag">$40K</span></div>
+<div class="card-meta"><span class="card-seller">Alex Kaars Sijpesteijn</span><span class="card-date">Dec 2025</span><span class="tag-deal tag">$40K</span></div>
 <div class="card-tags"><span class="tag tag-uk">UK</span><span class="tag tag-year">2026</span><span class="tag tag-industry">Tech / AI</span></div>
 <div class="metrics">
 <div class="metric"><div class="metric-val y">4.34M</div><div class="metric-label">Guaranteed Impressions</div></div>
 </div>
 <div class="card-actions">
-<a class="btn btn-pca" href="https://pubitypgl.sharepoint.com/sites/Pubity/Shared%20Documents/Forms/AllItems.aspx?id=%2Fsites%2FPubity%2FShared%20Documents%2FBrand%20Partnerships%20Hub%2FClient%20Services%2FClients%2FMeta%2F2026%2Fxx%5Fmeta%5Fai%5Fuk%5F1225" target="_blank">ð SharePoint</a>
-<a class="btn btn-deck" href="https://docs.google.com/presentation/d/1fYlsRXGnSEmIDRbKPPNwnFiAmKNLaPgS-Kpfdz5NKzA/edit" target="_blank">ð¬ Pitch</a>
-<a class="btn btn-mp" href="https://pubitypgl.sharepoint.com/:x:/r/sites/Pubity/Shared%20Documents/Brand%20Partnerships%20Hub/Client%20Services/Clients/Meta/2026/241_meta_ai_uk_1225/8.%20Reporting%20%26%20PCA/Pubity%20Report_Meta_AI_Feb26.xlsx" target="_blank">ð Report</a>
+<a class="btn btn-pca" href="https://pubitypgl.sharepoint.com/sites/Pubity/Shared%20Documents/Forms/AllItems.aspx?id=%2Fsites%2FPubity%2FShared%20Documents%2FBrand%20Partnerships%20Hub%2FClient%20Services%2FClients%2FMeta%2F2026%2Fxx%5Fmeta%5Fai%5Fuk%5F1225" target="_blank">SharePoint</a>
+<a class="btn btn-deck" href="https://docs.google.com/presentation/d/1fYlsRXGnSEmIDRbKPPNwnFiAmKNLaPgS-Kpfdz5NKzA/edit" target="_blank">Pitch</a>
+<a class="btn btn-mp" href="https://pubitypgl.sharepoint.com/:x:/r/sites/Pubity/Shared%20Documents/Brand%20Partnerships%20Hub/Client%20Services/Clients/Meta/2026/241_meta_ai_uk_1225/8.%20Reporting%20%26%20PCA/Pubity%20Report_Meta_AI_Feb26.xlsx" target="_blank">Report</a>
 </div>
 </div>
 <!-- NFL Super Bowl -->
 <div class="card" data-industry="sports" data-region="uk" data-status="won" data-year="2026">
 <div class="card-brand">NFL</div>
-<div class="card-campaign">Super Bowl 2026 â UK
-      <div class="card-actions">
-<a class="btn btn-hs" href="https://app.hubspot.com/contacts/143333975/record/0-3/427447915765" target="_blank">ð HubSpot</a>
+<div class="card-campaign">Super Bowl 2026 — UK
+<div class="card-actions">
+<a class="btn btn-hs" href="https://app.hubspot.com/contacts/143333975/record/0-3/427447915765" target="_blank">HubSpot</a>
 </div>
 </div>
-<div class="card-meta"><span class="card-seller">Alex Kaars Sijpesteijn</span><span class="card-date">ð JanâFeb 2026</span><span class="tag-deal tag">$75K</span></div>
+<div class="card-meta"><span class="card-seller">Alex Kaars Sijpesteijn</span><span class="card-date">Jan–Feb 2026</span><span class="tag-deal tag">$75K</span></div>
 <div class="card-tags"><span class="tag tag-uk">UK</span><span class="tag tag-year">2026</span><span class="tag tag-industry">Sports / Betting</span></div>
 <div class="metrics">
 <div class="metric"><div class="metric-val y">6.16M</div><div class="metric-label">Estimated Impressions</div></div>
 </div>
 <div class="card-actions">
-<a class="btn btn-pca" href="https://pubitypgl.sharepoint.com/:f:/r/sites/Pubity/Shared%20Documents/Brand%20Partnerships%20Hub/Client%20Services/Clients/NFL%20-%20Superbowl/xx_nfl_superbowl_uk_0125" target="_blank">ð SharePoint</a>
-<a class="btn btn-deck" href="https://pubitypgl.sharepoint.com/:b:/r/sites/Pubity/Shared%20Documents/Brand%20Partnerships%20Hub/Client%20Services/Clients/NFL%20-%20Superbowl/xx_nfl_superbowl_uk_0125/1.%20Brief,%20Strategy%20%26%20Response/Pubity%20Group%20x%20NFL_%20Super%20Bowl%202026%20-%2013.01.26.pdf" target="_blank">ð¬ Pitch</a>
-<a class="btn btn-mp" href="https://docs.google.com/presentation/d/1qRDo9jFGhLZV-k3gppP-b1PjyOaScgAzzXFooeqOFwk/edit" target="_blank">ð Wrap</a>
+<a class="btn btn-pca" href="https://pubitypgl.sharepoint.com/:f:/r/sites/Pubity/Shared%20Documents/Brand%20Partnerships%20Hub/Client%20Services/Clients/NFL%20-%20Superbowl/xx_nfl_superbowl_uk_0125" target="_blank">SharePoint</a>
+<a class="btn btn-deck" href="https://pubitypgl.sharepoint.com/:b:/r/sites/Pubity/Shared%20Documents/Brand%20Partnerships%20Hub/Client%20Services/Clients/NFL%20-%20Superbowl/xx_nfl_superbowl_uk_0125/1.%20Brief,%20Strategy%20%26%20Response/Pubity%20Group%20x%20NFL_%20Super%20Bowl%202026%20-%2013.01.26.pdf" target="_blank">Pitch</a>
+<a class="btn btn-mp" href="https://docs.google.com/presentation/d/1qRDo9jFGhLZV-k3gppP-b1PjyOaScgAzzXFooeqOFwk/edit" target="_blank">Wrap</a>
 </div>
 </div>
 <!-- McDonald's -->
 <div class="card" data-industry="qsr" data-region="uk" data-status="won" data-year="2026">
 <div class="card-brand">McDonald's</div>
 <div class="card-campaign">UK Campaign 2026
-      <div class="card-actions">
-<a class="btn btn-hs" href="https://app.hubspot.com/contacts/143333975/record/0-3/474609866986" target="_blank">ð HubSpot</a>
+<div class="card-actions">
+<a class="btn btn-hs" href="https://app.hubspot.com/contacts/143333975/record/0-3/474609866986" target="_blank">HubSpot</a>
 </div>
 </div>
-<div class="card-meta"><span class="card-seller">Alex Kaars Sijpesteijn</span><span class="card-date">ð Feb 2026</span><span class="tag-deal tag">$25K</span></div>
+<div class="card-meta"><span class="card-seller">Alex Kaars Sijpesteijn</span><span class="card-date">Feb 2026</span><span class="tag-deal tag">$25K</span></div>
 <div class="card-tags"><span class="tag tag-uk">UK</span><span class="tag tag-year">2026</span><span class="tag tag-industry">QSR / Food</span></div>
 <div class="card-actions">
-<a class="btn btn-pca" href="https://pubitypgl.sharepoint.com/sites/Pubity/Shared%20Documents/Forms/AllItems.aspx?id=%2Fsites%2FPubity%2FShared%20Documents%2FBrand%20Partnerships%20Hub%2FClient%20Services%2FClients%2FMcDonalds%2F288%5Fred%5Fmcdonalds%5Fuk%5F0226" target="_blank">ð SharePoint</a>
-<a class="btn btn-mp" href="https://pubitypgl.sharepoint.com/:x:/r/sites/Pubity/Shared%20Documents/Brand%20Partnerships%20Hub/Client%20Services/Clients/McDonalds/288_red_mcdonalds_uk_0226/8.%20Reporting%20%26%20PCA/McDonalds%20X%20Pubity%20Initial%20Report%5B72%5D.xlsx" target="_blank">ð Report</a>
+<a class="btn btn-pca" href="https://pubitypgl.sharepoint.com/sites/Pubity/Shared%20Documents/Forms/AllItems.aspx?id=%2Fsites%2FPubity%2FShared%20Documents%2FBrand%20Partnerships%20Hub%2FClient%20Services%2FClients%2FMcDonalds%2F288%5Fred%5Fmcdonalds%5Fuk%5F0226" target="_blank">SharePoint</a>
+<a class="btn btn-mp" href="https://pubitypgl.sharepoint.com/:x:/r/sites/Pubity/Shared%20Documents/Brand%20Partnerships%20Hub/Client%20Services/Clients/McDonalds/288_red_mcdonalds_uk_0226/8.%20Reporting%20%26%20PCA/McDonalds%20X%20Pubity%20Initial%20Report%5B72%5D.xlsx" target="_blank">Report</a>
 </div>
 </div>
 </div>
 </div>
-<!-- âââââââââââââââââââââââââââââââââââââââ US 2025 âââââââââââââââââââââââââââââââââââââââ -->
-<!-- âââââââââââââââââââââââââââââââââââââââ US 2026 âââââââââââââââââââââââââââââââââââââââ -->
-<!-- âââââââââââââââââââââââââââââââââââââââ ð GLOBAL / MIDDLE EAST âââââââââââââââââââââââââââââââââââââââ -->
+
+<!-- Global 2025 -->
 <div class="section-wrap" data-sr="global" data-sy="2025" id="sec-global-2025">
 <div class="section-header">
-<span class="section-flag">ð</span><span class="section-title">Global â 2025</span>
+<span class="section-title">Global — 2025</span>
 <span class="section-pill">Regional Partnerships</span><div class="section-divider"></div>
 </div>
 <div class="cards-grid">
@@ -715,98 +748,99 @@ tr:hover td{background:#1a1a1a;}
 <div class="card" data-industry="travel" data-region="me" data-status="won" data-year="2025">
 <div class="card-brand">Vantara</div>
 <div class="card-campaign">Messi &amp; Suarez Partnership</div>
-<div class="card-meta"><span class="card-seller">Global</span><span class="card-date">ð Dec 2025</span><span class="tag-deal tag">$40K</span></div>
+<div class="card-meta"><span class="card-seller">Global</span><span class="card-date">Dec 2025</span><span class="tag-deal tag">$40K</span></div>
 <div class="card-tags"><span class="tag tag-year">2025</span><span class="tag tag-industry">Travel</span></div>
 <div class="card-actions">
-<a class="btn btn-pca" href="https://pubitypgl.sharepoint.com/sites/Pubity/Shared%20Documents/Forms/AllItems.aspx?id=%2Fsites%2FPubity%2FShared%20Documents%2FBrand%20Partnerships%20Hub%2FClient%20Services%2FClients%2FVantara%2F260%5Fvantara%5Fmessisuarez%5F1225%5Fuk" target="_blank">ð SharePoint</a>
-<a class="btn btn-mp" href="https://pubitypgl.sharepoint.com/:x:/r/sites/Pubity/Shared%20Documents/Brand%20Partnerships%20Hub/Client%20Services/Clients/Vantara/260_vantara_messisuarez_1225_uk/8.%20Reporting%20%26%20PCA/Pubity%20x%20Vantara_Messi%20Suarez_Report.xlsx" target="_blank">ð Report</a>
-<a class="btn btn-hs" href="https://app.hubspot.com/contacts/143333975/record/0-3/412695647437" target="_blank">ð HubSpot</a>
+<a class="btn btn-pca" href="https://pubitypgl.sharepoint.com/sites/Pubity/Shared%20Documents/Forms/AllItems.aspx?id=%2Fsites%2FPubity%2FShared%20Documents%2FBrand%20Partnerships%20Hub%2FClient%20Services%2FClients%2FVantara%2F260%5Fvantara%5Fmessisuarez%5F1225%5Fuk" target="_blank">SharePoint</a>
+<a class="btn btn-mp" href="https://pubitypgl.sharepoint.com/:x:/r/sites/Pubity/Shared%20Documents/Brand%20Partnerships%20Hub/Client%20Services/Clients/Vantara/260_vantara_messisuarez_1225_uk/8.%20Reporting%20%26%20PCA/Pubity%20x%20Vantara_Messi%20Suarez_Report.xlsx" target="_blank">Report</a>
+<a class="btn btn-hs" href="https://app.hubspot.com/contacts/143333975/record/0-3/412695647437" target="_blank">HubSpot</a>
 </div>
 </div>
 <!-- Visit Saudi -->
 <div class="card" data-industry="travel" data-region="me" data-status="won" data-year="2025">
 <div class="card-brand">Visit Saudi</div>
 <div class="card-campaign">Snaps of Saudi
-      <div class="card-actions">
-<a class="btn btn-hs" href="https://app.hubspot.com/contacts/143333975/record/0-3/253867704545" target="_blank">ð HubSpot</a>
+<div class="card-actions">
+<a class="btn btn-hs" href="https://app.hubspot.com/contacts/143333975/record/0-3/253867704545" target="_blank">HubSpot</a>
 </div>
 </div>
-<div class="card-meta"><span class="card-seller">Global</span><span class="card-date">ð AugâOct 2025</span><span class="tag-deal tag">$160K</span></div>
+<div class="card-meta"><span class="card-seller">Global</span><span class="card-date">Aug–Oct 2025</span><span class="tag-deal tag">$160K</span></div>
 <div class="card-tags"><span class="tag tag-year">2025</span><span class="tag tag-industry">Travel</span></div>
 <div class="metrics">
 <div class="metric"><div class="metric-val y">19.3M</div><div class="metric-label">Est. Impressions</div></div>
 </div>
 <div class="card-actions">
-<a class="btn btn-pca" href="https://pubitypgl.sharepoint.com/:f:/r/sites/Pubity/Shared%20Documents/Commercial%20Hub/Branded%20Content/Clients/Visit%20Saudi/2025/197_visitsaudi_snapsofsaudi_me_0525" target="_blank">ð SharePoint</a>
-<a class="btn btn-deck" href="https://docs.google.com/presentation/d/11GKvNbaIOhqjWYrPeHQ-2o4rrfPq3R_-XULtNUiMpTw/edit" target="_blank">ð¬ PCA</a>
+<a class="btn btn-pca" href="https://pubitypgl.sharepoint.com/:f:/r/sites/Pubity/Shared%20Documents/Commercial%20Hub/Branded%20Content/Clients/Visit%20Saudi/2025/197_visitsaudi_snapsofsaudi_me_0525" target="_blank">SharePoint</a>
+<a class="btn btn-deck" href="https://docs.google.com/presentation/d/11GKvNbaIOhqjWYrPeHQ-2o4rrfPq3R_-XULtNUiMpTw/edit" target="_blank">PCA</a>
 </div>
 </div>
 <!-- Visit Qatar Perception -->
 <div class="card" data-industry="travel" data-region="me" data-status="won" data-year="2025">
 <div class="card-brand">Visit Qatar</div>
 <div class="card-campaign">Perception Campaign
-      <div class="card-actions">
-<a class="btn btn-hs" href="https://app.hubspot.com/contacts/143333975/record/0-3/338804578548" target="_blank">ð HubSpot</a>
+<div class="card-actions">
+<a class="btn btn-hs" href="https://app.hubspot.com/contacts/143333975/record/0-3/338804578548" target="_blank">HubSpot</a>
 </div>
 </div>
-<div class="card-meta"><span class="card-seller">Global</span><span class="card-date">ð Oct 2025âJan 2026</span><span class="tag-deal tag">$280K</span></div>
+<div class="card-meta"><span class="card-seller">Global</span><span class="card-date">Oct 2025–Jan 2026</span><span class="tag-deal tag">$280K</span></div>
 <div class="card-tags"><span class="tag tag-year">2025</span><span class="tag tag-industry">Travel</span></div>
 <div class="metrics">
 <div class="metric"><div class="metric-val y">18.2M</div><div class="metric-label">Est. Impressions</div></div>
 </div>
 <div class="card-actions">
-<a class="btn btn-pca" href="https://pubitypgl.sharepoint.com/sites/Pubity/Shared%20Documents/Forms/AllItems.aspx?id=%2Fsites%2FPubity%2FShared%20Documents%2FBrand%20Partnerships%20Hub%2FClient%20Services%2FClients%2FVisit%20Qatar%2F232%5FVisitQatar%5FPerception%5FQatar%5F2025" target="_blank">ð SharePoint</a>
-<a class="btn btn-hs" href="https://app.hubspot.com/contacts/143333975/record/0-3/396747165928" target="_blank">ð HubSpot</a>
+<a class="btn btn-pca" href="https://pubitypgl.sharepoint.com/sites/Pubity/Shared%20Documents/Forms/AllItems.aspx?id=%2Fsites%2FPubity%2FShared%20Documents%2FBrand%20Partnerships%20Hub%2FClient%20Services%2FClients%2FVisit%20Qatar%2F232%5FVisitQatar%5FPerception%5FQatar%5F2025" target="_blank">SharePoint</a>
+<a class="btn btn-hs" href="https://app.hubspot.com/contacts/143333975/record/0-3/396747165928" target="_blank">HubSpot</a>
 </div>
 </div>
 <!-- Visit Qatar The Arrivals -->
 <div class="card" data-industry="travel" data-region="me" data-status="won" data-year="2025">
 <div class="card-brand">Visit Qatar</div>
 <div class="card-campaign">The Arrivals</div>
-<div class="card-meta"><span class="card-seller">Global</span><span class="card-date">ð 2025</span></div>
+<div class="card-meta"><span class="card-seller">Global</span><span class="card-date">2025</span></div>
 <div class="card-tags"><span class="tag tag-year">2025</span><span class="tag tag-industry">Travel</span></div>
 <div class="metrics">
 <div class="metric"><div class="metric-val y">6.43M</div><div class="metric-label">Est. Impressions</div></div>
 </div>
 <div class="card-actions">
-<a class="btn btn-pca" href="https://pubitypgl.sharepoint.com/sites/Pubity/Shared%20Documents/Forms/AllItems.aspx?id=%2Fsites%2FPubity%2FShared%20Documents%2FBrand%20Partnerships%20Hub%2FClient%20Services%2FClients%2FVisit%20Qatar%2FXX%5FVisitQatar%5FTheArrivals%5FME%5F" target="_blank">ð SharePoint</a>
+<a class="btn btn-pca" href="https://pubitypgl.sharepoint.com/sites/Pubity/Shared%20Documents/Forms/AllItems.aspx?id=%2Fsites%2FPubity%2FShared%20Documents%2FBrand%20Partnerships%20Hub%2FClient%20Services%2FClients%2FVisit%20Qatar%2FXX%5FVisitQatar%5FTheArrivals%5FME%5F" target="_blank">SharePoint</a>
 </div>
 </div>
 <!-- Yas Island Stranger Things -->
 <div class="card" data-industry="travel" data-region="me" data-status="won" data-year="2025">
 <div class="card-brand">Yas Island</div>
 <div class="card-campaign">Stranger Things Activation
-      <div class="card-actions">
-<a class="btn btn-hs" href="https://app.hubspot.com/contacts/143333975/record/0-3/311513777373" target="_blank">ð HubSpot</a>
+<div class="card-actions">
+<a class="btn btn-hs" href="https://app.hubspot.com/contacts/143333975/record/0-3/311513777373" target="_blank">HubSpot</a>
 </div>
 </div>
-<div class="card-meta"><span class="card-seller">Global</span><span class="card-date">ð Nov 2025âFeb 2026</span><span class="tag-deal tag">$250K</span></div>
+<div class="card-meta"><span class="card-seller">Global</span><span class="card-date">Nov 2025–Feb 2026</span><span class="tag-deal tag">$250K</span></div>
 <div class="card-tags"><span class="tag tag-year">2025</span><span class="tag tag-industry">Travel</span></div>
 <div class="card-actions">
-<a class="btn btn-pca" href="https://pubitypgl.sharepoint.com/:f:/r/sites/Pubity/Shared%20Documents/Brand%20Partnerships%20Hub/Client%20Services/Clients/Yas%20Island/2025/XX_YasIsland_StrangerThings_UAE_2025" target="_blank">ð SharePoint</a>
+<a class="btn btn-pca" href="https://pubitypgl.sharepoint.com/:f:/r/sites/Pubity/Shared%20Documents/Brand%20Partnerships%20Hub/Client%20Services/Clients/Yas%20Island/2025/XX_YasIsland_StrangerThings_UAE_2025" target="_blank">SharePoint</a>
 </div>
 </div>
 <!-- Capcom RE9 -->
 <div class="card" data-industry="gaming" data-region="global" data-status="won" data-year="2025">
 <div class="card-brand">Capcom</div>
 <div class="card-campaign">Resident Evil 9 Launch
-      <div class="card-actions">
-<a class="btn btn-hs" href="https://app.hubspot.com/contacts/143333975/record/0-3/384867013874" target="_blank">ð HubSpot</a>
+<div class="card-actions">
+<a class="btn btn-hs" href="https://app.hubspot.com/contacts/143333975/record/0-3/384867013874" target="_blank">HubSpot</a>
 </div>
 </div>
-<div class="card-meta"><span class="card-seller">Global</span><span class="card-date">ð Dec 2025</span><span class="tag-deal tag">$85K</span></div>
+<div class="card-meta"><span class="card-seller">Global</span><span class="card-date">Dec 2025</span><span class="tag-deal tag">$85K</span></div>
 <div class="card-tags"><span class="tag tag-year">2025</span><span class="tag tag-industry">Gaming</span></div>
 <div class="card-actions">
-<a class="btn btn-pca" href="https://pubitypgl.sharepoint.com/sites/Pubity/Shared%20Documents/Forms/AllItems.aspx?id=%2Fsites%2FPubity%2FShared%20Documents%2FBrand%20Partnerships%20Hub%2FClient%20Services%2FClients%2FCapcom%2FXX%5FCapcom%5FRE9%5FUS%5F2025" target="_blank">ð SharePoint</a>
-<a class="btn btn-mp" href="https://pubitypgl.sharepoint.com/:x:/r/sites/Pubity/Shared%20Documents/Brand%20Partnerships%20Hub/Client%20Services/Clients/Capcom/248_Capcom_RE9_US_2025%20-%20AMPLIFICATION/8.%20Reporting%20%26%20PCA/Capcom%20Resident%20Evil.xlsx" target="_blank">ð Report</a>
+<a class="btn btn-pca" href="https://pubitypgl.sharepoint.com/sites/Pubity/Shared%20Documents/Forms/AllItems.aspx?id=%2Fsites%2FPubity%2FShared%20Documents%2FBrand%20Partnerships%20Hub%2FClient%20Services%2FClients%2FCapcom%2FXX%5FCapcom%5FRE9%5FUS%5F2025" target="_blank">SharePoint</a>
+<a class="btn btn-mp" href="https://pubitypgl.sharepoint.com/:x:/r/sites/Pubity/Shared%20Documents/Brand%20Partnerships%20Hub/Client%20Services/Clients/Capcom/248_Capcom_RE9_US_2025%20-%20AMPLIFICATION/8.%20Reporting%20%26%20PCA/Capcom%20Resident%20Evil.xlsx" target="_blank">Report</a>
 </div>
 </div>
 </div>
 </div>
-<!-- âââââââââââââââââââââââââââââââââââââââ ð GLOBAL / MIDDLE EAST â 2026 âââââââââââââââââââââââââââââââââââââââ -->
+
+<!-- Global 2026 -->
 <div class="section-wrap" data-sr="global" data-sy="2026" id="sec-global-2026">
 <div class="section-header">
-<span class="section-flag">ð</span><span class="section-title">Global â 2026</span>
+<span class="section-title">Global — 2026</span>
 <span class="section-pill">Regional Partnerships</span><div class="section-divider"></div>
 </div>
 <div class="cards-grid">
@@ -814,38 +848,39 @@ tr:hover td{background:#1a1a1a;}
 <div class="card" data-industry="fmcg" data-region="global" data-status="won" data-year="2026">
 <div class="card-brand">Heineken</div>
 <div class="card-campaign">Champions League Event Activation
-      <div class="card-actions">
-<a class="btn btn-hs" href="https://app.hubspot.com/contacts/143333975/record/0-3/12734998007" target="_blank">ð HubSpot</a>
+<div class="card-actions">
+<a class="btn btn-hs" href="https://app.hubspot.com/contacts/143333975/record/0-3/12734998007" target="_blank">HubSpot</a>
 </div>
 </div>
-<div class="card-meta"><span class="card-seller">Global</span><span class="card-date">ð Jan 2026</span><span class="tag-deal tag">$37K</span></div>
+<div class="card-meta"><span class="card-seller">Global</span><span class="card-date">Jan 2026</span><span class="tag-deal tag">$37K</span></div>
 <div class="card-tags"><span class="tag tag-year">2026</span><span class="tag tag-industry">FMCG / CPG</span></div>
 <div class="card-actions">
-<a class="btn btn-mp" href="https://pubitypgl.sharepoint.com/:x:/r/sites/Pubity/Shared%20Documents/Brand%20Partnerships%20Hub/Client%20Services/Clients/Heineken/279_heineken_clevent_global_0126/276_heineken_clevent_global_0126%20-%20AMPLIFICATION/8.%20Reporting%20%26%20PCA/Heineken%20X%20Pubity%20Final%20Report.xlsx" target="_blank">ð Report</a>
-<a class="btn btn-hs" href="https://app.hubspot.com/contacts/143333975/record/0-3/92960590038" target="_blank">ð HubSpot</a>
+<a class="btn btn-mp" href="https://pubitypgl.sharepoint.com/:x:/r/sites/Pubity/Shared%20Documents/Brand%20Partnerships%20Hub/Client%20Services/Clients/Heineken/279_heineken_clevent_global_0126/276_heineken_clevent_global_0126%20-%20AMPLIFICATION/8.%20Reporting%20%26%20PCA/Heineken%20X%20Pubity%20Final%20Report.xlsx" target="_blank">Report</a>
+<a class="btn btn-hs" href="https://app.hubspot.com/contacts/143333975/record/0-3/92960590038" target="_blank">HubSpot</a>
 </div>
 </div>
 <!-- Miral CLYMB Championship -->
 <div class="card" data-industry="sports" data-region="me" data-status="won" data-year="2026">
 <div class="card-brand">Miral</div>
 <div class="card-campaign">CLYMB Championship</div>
-<div class="card-meta"><span class="card-seller">Global</span><span class="card-date">ð Jan 2026</span></div>
+<div class="card-meta"><span class="card-seller">Global</span><span class="card-date">Jan 2026</span></div>
 <div class="card-tags"><span class="tag tag-year">2026</span><span class="tag tag-industry">Sports / Betting</span></div>
 <div class="metrics">
 <div class="metric"><div class="metric-val y">130K</div><div class="metric-label">Guaranteed Impressions</div></div>
 </div>
 <div class="card-actions">
-<a class="btn btn-pca" href="https://pubitypgl.sharepoint.com/sites/Pubity/Shared%20Documents/Forms/AllItems.aspx?id=%2Fsites%2FPubity%2FShared%20Documents%2FBrand%20Partnerships%20Hub%2FClient%20Services%2FClients%2FMIRAL%20CLYMB%20CHAMPIONSHIPS" target="_blank">ð SharePoint</a>
-<a class="btn btn-mp" href="https://pubitypgl.sharepoint.com/:x:/r/sites/Pubity/Shared%20Documents/Brand%20Partnerships%20Hub/Client%20Services/Clients/MIRAL%20CLYMB%20CHAMPIONSHIPS/miral_clymb-championship_uae_jan%20-%20AMPLIFICATION/8.%20Reporting%20%26%20PCA/MIRAL%20CLYMB%20REPORT.xlsx" target="_blank">ð Report</a>
+<a class="btn btn-pca" href="https://pubitypgl.sharepoint.com/sites/Pubity/Shared%20Documents/Forms/AllItems.aspx?id=%2Fsites%2FPubity%2FShared%20Documents%2FBrand%20Partnerships%20Hub%2FClient%20Services%2FClients%2FMIRAL%20CLYMB%20CHAMPIONSHIPS" target="_blank">SharePoint</a>
+<a class="btn btn-mp" href="https://pubitypgl.sharepoint.com/:x:/r/sites/Pubity/Shared%20Documents/Brand%20Partnerships%20Hub/Client%20Services/Clients/MIRAL%20CLYMB%20CHAMPIONSHIPS/miral_clymb-championship_uae_jan%20-%20AMPLIFICATION/8.%20Reporting%20%26%20PCA/MIRAL%20CLYMB%20REPORT.xlsx" target="_blank">Report</a>
 </div>
 </div>
 </div>
 </div>
-<!-- âââââââââââââââââââââââââââââââââââââââ â CLOSED LOST UK âââââââââââââââââââââââââââââââââââââââ -->
+
+<!-- Closed Lost UK -->
 <div class="section-wrap section-lost" id="sec-lost-uk">
 <div class="section-header">
-<span class="section-flag">â</span><span class="section-title" style="color:var(--red)">Closed Lost â UK</span>
-<span class="section-pill">Learning Opportunities</span><div class="section-divider" style="background:rgba(223,47,74,.3)"></div>
+<span class="section-title" style="color:var(--red)">Closed Lost — UK</span>
+<span class="section-pill">Learning Opportunities</span><div class="section-divider" style="background:rgba(220,38,38,.3)"></div>
 </div>
 <div class="cards-grid">
 <!-- Visit Dubai 2025 Retainer -->
@@ -854,7 +889,7 @@ tr:hover td{background:#1a1a1a;}
 <div>
 <div class="card-brand">Visit Dubai</div>
 <div class="card-campaign">2025 Annual Retainer</div>
-<div class="card-meta"><span class="card-seller">Myles (Alex)</span><span class="card-date">ð Close Sep 2025</span><span class="tag-deal tag">$400K</span></div>
+<div class="card-meta"><span class="card-seller">Myles (Alex)</span><span class="card-date">Close Sep 2025</span><span class="tag-deal tag">$400K</span></div>
 </div>
 <span class="lost-badge">CLOSED LOST</span>
 </div>
@@ -862,19 +897,19 @@ tr:hover td{background:#1a1a1a;}
 <div class="metrics">
 <div class="metric"><div class="metric-val r">$400K</div><div class="metric-label">Lost Value</div></div>
 </div>
-<div class="lost-reason">â ï¸ <strong>Reason:</strong> Despite the successful 2025 UK Targeting Test campaign (117% delivery), the annual retainer did not convert. Budget constraints and agency review process likely contributed. Visit Dubai moved to a different allocation strategy.</div>
-<div style="font-size:11px;color:var(--muted);margin-top:6px">ð <strong>Lesson:</strong> Strong test campaign delivery (+517% BritishMemes) should be leveraged faster into retainer conversations. Build renewal clause into initial contracts.</div>
+<div class="lost-reason"><strong>Reason:</strong> Despite the successful 2025 UK Targeting Test campaign (117% delivery), the annual retainer did not convert. Budget constraints and agency review process likely contributed. Visit Dubai moved to a different allocation strategy.</div>
+<div style="font-size:11px;color:var(--muted);margin-top:6px"><strong>Lesson:</strong> Strong test campaign delivery (+517% BritishMemes) should be leveraged faster into retainer conversations. Build renewal clause into initial contracts.</div>
 <div class="card-actions">
-<a class="btn btn-hs" href="https://app.hubspot.com/contacts/143333975/record/0-3/33995925731" target="_blank">ð HubSpot</a>
+<a class="btn btn-hs" href="https://app.hubspot.com/contacts/143333975/record/0-3/33995925731" target="_blank">HubSpot</a>
 </div>
 </div>
 <!-- CeraVe Skin Care UK -->
 <div class="card card-lost" data-industry="beauty" data-region="uk" data-status="lost" data-year="2025">
 <div style="display:flex;justify-content:space-between;align-items:flex-start">
 <div>
-<div class="card-brand">CeraVe (L'OrÃ©al)</div>
-<div class="card-campaign">CeraVe Skin Care â UK</div>
-<div class="card-meta"><span class="card-seller">Alex Kaars Sijpesteijn</span><span class="card-date">ð 2025</span><span class="tag-deal tag">$318K</span></div>
+<div class="card-brand">CeraVe (L'Oréal)</div>
+<div class="card-campaign">CeraVe Skin Care — UK</div>
+<div class="card-meta"><span class="card-seller">Alex Kaars Sijpesteijn</span><span class="card-date">2025</span><span class="tag-deal tag">$318K</span></div>
 </div>
 <span class="lost-badge">CLOSED LOST</span>
 </div>
@@ -882,19 +917,19 @@ tr:hover td{background:#1a1a1a;}
 <div class="metrics">
 <div class="metric"><div class="metric-val r">$318K</div><div class="metric-label">Lost Value</div></div>
 </div>
-<div class="lost-reason">â ï¸ <strong>Reason:</strong> CeraVe UK went with alternative UK-specific influencer strategy. L'OrÃ©al agency prioritised micro-influencer approach over mass reach for this market. NB: CeraVe US (Kevin Durant, NBA) converted successfully via Breezy.</div>
-<div style="font-size:11px;color:var(--muted);margin-top:6px">ð <strong>Lesson:</strong> UK beauty market requires a different pitch angle â lead with BritishMemes reach and female-skewing accounts (Girlyzar) rather than US mass-reach metrics.</div>
+<div class="lost-reason"><strong>Reason:</strong> CeraVe UK went with alternative UK-specific influencer strategy. L'Oréal agency prioritised micro-influencer approach over mass reach for this market. NB: CeraVe US (Kevin Durant, NBA) converted successfully via Breezy.</div>
+<div style="font-size:11px;color:var(--muted);margin-top:6px"><strong>Lesson:</strong> UK beauty market requires a different pitch angle — lead with BritishMemes reach and female-skewing accounts (Girlyzar) rather than US mass-reach metrics.</div>
 <div class="card-actions">
-<a class="btn btn-hs" href="https://app.hubspot.com/contacts/143333975/record/0-3/114471994617" target="_blank">ð HubSpot</a>
+<a class="btn btn-hs" href="https://app.hubspot.com/contacts/143333975/record/0-3/114471994617" target="_blank">HubSpot</a>
 </div>
 </div>
 <!-- CeraVe Competition UK -->
 <div class="card card-lost" data-industry="beauty" data-region="uk" data-status="lost" data-year="2025">
 <div style="display:flex;justify-content:space-between;align-items:flex-start">
 <div>
-<div class="card-brand">CeraVe (L'OrÃ©al)</div>
-<div class="card-campaign">CeraVe Competition â UK</div>
-<div class="card-meta"><span class="card-seller">Alex Kaars Sijpesteijn</span><span class="card-date">ð 2025</span><span class="tag-deal tag">$135K</span></div>
+<div class="card-brand">CeraVe (L'Oréal)</div>
+<div class="card-campaign">CeraVe Competition — UK</div>
+<div class="card-meta"><span class="card-seller">Alex Kaars Sijpesteijn</span><span class="card-date">2025</span><span class="tag-deal tag">$135K</span></div>
 </div>
 <span class="lost-badge">CLOSED LOST</span>
 </div>
@@ -902,9 +937,9 @@ tr:hover td{background:#1a1a1a;}
 <div class="metrics">
 <div class="metric"><div class="metric-val r">$135K</div><div class="metric-label">Lost Value</div></div>
 </div>
-<div class="lost-reason">â ï¸ <strong>Reason:</strong> Competition mechanic proposal not selected â brand preferred owned-channel execution rather than Pubity-hosted competition format for UK audience.</div>
+<div class="lost-reason"><strong>Reason:</strong> Competition mechanic proposal not selected — brand preferred owned-channel execution rather than Pubity-hosted competition format for UK audience.</div>
 <div class="card-actions">
-<a class="btn btn-hs" href="https://app.hubspot.com/contacts/143333975/record/0-3/98407872743" target="_blank">ð HubSpot</a>
+<a class="btn btn-hs" href="https://app.hubspot.com/contacts/143333975/record/0-3/98407872743" target="_blank">HubSpot</a>
 </div>
 </div>
 <!-- Visit Dubai Esports -->
@@ -913,23 +948,43 @@ tr:hover td{background:#1a1a1a;}
 <div>
 <div class="card-brand">Visit Dubai</div>
 <div class="card-campaign">Esports Festival 2026</div>
-<div class="card-meta"><span class="card-seller">Myles</span><span class="card-date">ð Mar 2026</span><span class="tag-deal tag">Pro Bono</span></div>
+<div class="card-meta"><span class="card-seller">Myles</span><span class="card-date">Mar 2026</span><span class="tag-deal tag">Pro Bono</span></div>
 </div>
 <span class="lost-badge">CLOSED LOST</span>
 </div>
 <div class="card-tags"><span class="tag tag-uk">UK</span><span class="tag tag-industry">Middle East</span></div>
 <div class="metrics"><div class="metric"><div class="metric-val r">$0</div><div class="metric-label">Deal Value</div></div></div>
-<div class="lost-reason">â ï¸ <strong>Reason:</strong> Esports festival partnership did not progress â likely event budget allocation or timing conflict with other Visit Dubai marketing priorities.</div>
+<div class="lost-reason"><strong>Reason:</strong> Esports festival partnership did not progress — likely event budget allocation or timing conflict with other Visit Dubai marketing priorities.</div>
 <div class="card-actions">
-<a class="btn btn-hs" href="https://app.hubspot.com/contacts/143333975/record/0-3/152253177027" target="_blank">ð HubSpot</a>
+<a class="btn btn-hs" href="https://app.hubspot.com/contacts/143333975/record/0-3/152253177027" target="_blank">HubSpot</a>
 </div>
 </div>
 </div>
 </div>
-<!-- DELIVERABLES TABLE -->
+
+<!-- Seller Performance Summary -->
+<div class="seller-summary" id="seller-summary">
+<div class="section-header">
+<span class="section-title">Seller Performance Summary</span>
+<div class="section-divider"></div>
+</div>
+<div class="table-wrap">
+<table class="seller-table">
+<thead><tr><th>Seller</th><th>Campaigns Pitched</th><th>Closed Won</th><th>Win Rate</th></tr></thead>
+<tbody>
+<tr><td>Alex Kaars Sijpesteijn</td><td>29</td><td>27</td><td>93%</td></tr>
+<tr><td>Myles</td><td>3</td><td>1</td><td>33%</td></tr>
+<tr><td>Global</td><td>8</td><td>8</td><td>100%</td></tr>
+<tr class="total-row"><td>TOTAL</td><td>40</td><td>36</td><td>90%</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<!-- Deliverables Table -->
 <div class="deliv-section" id="deliv-section">
 <div class="section-header">
-<span class="section-flag">ð</span><span class="section-title">Key Deliverables â Real Data</span>
+<span class="section-title">Key Deliverables — Real Data</span>
 <div class="section-divider"></div>
 </div>
 <div class="table-wrap">
@@ -939,72 +994,73 @@ tr:hover td{background:#1a1a1a;}
 </thead>
 <tbody>
 <tr>
-<td class="td-brand">Burger King</td><td>HTTYD</td><td>MayâJun 2025</td>
-<td class="td-num">22.1M</td><td class="td-num">483K</td><td class="td-num">2.28%</td><td class="td-num">136%</td><td>ðºð¸</td>
-<td class="td-hs"><a href="https://app.hubspot.com/contacts/143333975/record/0-3/120495056066" target="_blank">HS â</a></td>
-<td class="td-link"><a href="https://pubitypgl.sharepoint.com/sites/Pubity/Shared%20Documents/Brand%20Partnerships%20Hub/Client%20Services/Clients/Burger%20King/2025/168_BurgerKing_How-to-train-your-dragon_US_2025%20-%20BESPOKE/8.%20Reporting%20%26%20PCA/Burger%20King%20How%20to%20Train%20Your%20Dragon%20PCA%202025%20(1).pdf" target="_blank">PCA PDF â</a></td>
+<td class="td-brand">Burger King</td><td>HTTYD</td><td>May–Jun 2025</td>
+<td class="td-num">22.1M</td><td class="td-num">483K</td><td class="td-num">2.28%</td><td class="td-num">136%</td><td>US</td>
+<td class="td-hs"><a href="https://app.hubspot.com/contacts/143333975/record/0-3/120495056066" target="_blank">HS →</a></td>
+<td class="td-link"><a href="https://pubitypgl.sharepoint.com/sites/Pubity/Shared%20Documents/Brand%20Partnerships%20Hub/Client%20Services/Clients/Burger%20King/2025/168_BurgerKing_How-to-train-your-dragon_US_2025%20-%20BESPOKE/8.%20Reporting%20%26%20PCA/Burger%20King%20How%20to%20Train%20Your%20Dragon%20PCA%202025%20(1).pdf" target="_blank">PCA PDF →</a></td>
 </tr>
 <tr>
-<td class="td-brand">Burger King</td><td>SpongeBob Movie</td><td>Dec 2â19, 2025</td>
-<td class="td-num">4.8M</td><td class="td-num">288K</td><td class="td-num">6.0%</td><td class="td-num" style="color:var(--blue)">+41PT</td><td>ðºð¸</td>
-<td class="td-hs"><a href="https://app.hubspot.com/contacts/143333975/record/0-3/229237603570" target="_blank">HS â</a></td>
-<td class="td-link"><a href="https://pubitypgl.sharepoint.com/sites/Pubity/Shared%20Documents/Brand%20Partnerships%20Hub/Client%20Services/Clients/Burger%20King/2025/209_burgerking_spongebob_us_0825/8.%20Reporting%20%26%20PCA/" target="_blank">Folder â</a></td>
+<td class="td-brand">Burger King</td><td>SpongeBob Movie</td><td>Dec 2–19, 2025</td>
+<td class="td-num">4.8M</td><td class="td-num">288K</td><td class="td-num">6.0%</td><td class="td-num" style="color:var(--blue)">+41PT</td><td>US</td>
+<td class="td-hs"><a href="https://app.hubspot.com/contacts/143333975/record/0-3/229237603570" target="_blank">HS →</a></td>
+<td class="td-link"><a href="https://pubitypgl.sharepoint.com/sites/Pubity/Shared%20Documents/Brand%20Partnerships%20Hub/Client%20Services/Clients/Burger%20King/2025/209_burgerking_spongebob_us_0825/8.%20Reporting%20%26%20PCA/" target="_blank">Folder →</a></td>
 </tr>
 <tr>
-<td class="td-brand">Fortnite (Epic)</td><td>Ã The Simpsons</td><td>OctâNov 2025</td>
-<td class="td-num">8.1M</td><td class="td-num">517K</td><td class="td-num">6.4%</td><td class="td-num" style="color:var(--red)">517%</td><td>ðºð¸</td>
-<td class="td-hs"><a href="https://app.hubspot.com/contacts/143333975/record/0-3/286921439444" target="_blank">HS â</a></td>
-<td class="td-link"><a href="https://pubitypgl.sharepoint.com/sites/Pubity/Shared%20Documents/Brand%20Partnerships%20Hub/Client%20Services/Clients/Epic%20Games/Fortnite/2025/221_Fortnite_Simpsons_US_1025/" target="_blank">Folder â</a></td>
+<td class="td-brand">Fortnite (Epic)</td><td>x The Simpsons</td><td>Oct–Nov 2025</td>
+<td class="td-num">8.1M</td><td class="td-num">517K</td><td class="td-num">6.4%</td><td class="td-num" style="color:var(--red)">517%</td><td>US</td>
+<td class="td-hs"><a href="https://app.hubspot.com/contacts/143333975/record/0-3/286921439444" target="_blank">HS →</a></td>
+<td class="td-link"><a href="https://pubitypgl.sharepoint.com/sites/Pubity/Shared%20Documents/Brand%20Partnerships%20Hub/Client%20Services/Clients/Epic%20Games/Fortnite/2025/221_Fortnite_Simpsons_US_1025/" target="_blank">Folder →</a></td>
 </tr>
 <tr>
-<td class="td-brand">Paramount</td><td>The Running Man</td><td>Nov 7â10, 2025</td>
-<td class="td-num">28.4M</td><td class="td-num">425K</td><td class="td-num">1.50%</td><td class="td-num" style="color:var(--red)">284%</td><td>ðºð¸</td>
-<td class="td-hs"><a href="https://app.hubspot.com/contacts/143333975/record/0-3/174876668135" target="_blank">HS â</a></td>
-<td class="td-link"><a href="https://pubitypgl.sharepoint.com/sites/Pubity/Shared%20Documents/Brand%20Partnerships%20Hub/Client%20Services/Clients/Paramount/2025/194_Paramount_TheRunningMan_US_2025%20-%20Amplification/8.%20Reporting%20%26%20PCA/Report_Paramount%20Running%20Man%20US_Nov%202025.xlsx" target="_blank">Report â</a></td>
+<td class="td-brand">Paramount</td><td>The Running Man</td><td>Nov 7–10, 2025</td>
+<td class="td-num">28.4M</td><td class="td-num">425K</td><td class="td-num">1.50%</td><td class="td-num" style="color:var(--red)">284%</td><td>US</td>
+<td class="td-hs"><a href="https://app.hubspot.com/contacts/143333975/record/0-3/174876668135" target="_blank">HS →</a></td>
+<td class="td-link"><a href="https://pubitypgl.sharepoint.com/sites/Pubity/Shared%20Documents/Brand%20Partnerships%20Hub/Client%20Services/Clients/Paramount/2025/194_Paramount_TheRunningMan_US_2025%20-%20Amplification/8.%20Reporting%20%26%20PCA/Report_Paramount%20Running%20Man%20US_Nov%202025.xlsx" target="_blank">Report →</a></td>
 </tr>
 <tr>
-<td class="td-brand">Visit Dubai</td><td>DSS â UK Targeting Test</td><td>JulâAug 2025</td>
-<td class="td-num">7.9M</td><td class="td-num">â</td><td class="td-num">1.21%</td><td class="td-num" style="color:var(--blue)">+19PT BLS</td><td>ð¬ð§</td>
-<td class="td-hs"><a href="https://app.hubspot.com/contacts/143333975/record/0-3/163449352418" target="_blank">HS â</a></td>
-<td class="td-link"><a href="https://pubitypgl.sharepoint.com/sites/Pubity/Shared%20Documents/Brand%20Partnerships%20Hub/Client%20Services/Clients/Visit%20Dubai/186_VisitDubai_UKTargetingTest_UK_0425/7.%20Reporting%20%26%20PCA/Visit%20Dubai%20PCA%202025.pptx" target="_blank">PCA â</a></td>
+<td class="td-brand">Visit Dubai</td><td>DSS — UK Targeting Test</td><td>Jul–Aug 2025</td>
+<td class="td-num">7.9M</td><td class="td-num">—</td><td class="td-num">1.21%</td><td class="td-num" style="color:var(--blue)">+19PT BLS</td><td>UK</td>
+<td class="td-hs"><a href="https://app.hubspot.com/contacts/143333975/record/0-3/163449352418" target="_blank">HS →</a></td>
+<td class="td-link"><a href="https://pubitypgl.sharepoint.com/sites/Pubity/Shared%20Documents/Brand%20Partnerships%20Hub/Client%20Services/Clients/Visit%20Dubai/186_VisitDubai_UKTargetingTest_UK_0425/7.%20Reporting%20%26%20PCA/Visit%20Dubai%20PCA%202025.pptx" target="_blank">PCA →</a></td>
 </tr>
 <tr>
-<td class="td-brand">WB / Wuthering Heights</td><td>UK Campaign</td><td>Feb 9â13, 2026</td>
-<td class="td-num">6.12M</td><td class="td-num">83K</td><td class="td-num">1.5%</td><td class="td-num">117%</td><td>ð¬ð§</td>
-<td class="td-hs"><a href="https://app.hubspot.com/contacts/143333975/record/0-3/313386810556" target="_blank">HS â</a></td>
-<td class="td-link"><a href="https://pubitypgl.sharepoint.com/sites/Pubity/Shared%20Documents/Brand%20Partnerships%20Hub/Client%20Services/Clients/Warner%20Bros/2026/292_wb_themummy_uk_0226/7.%20Reporting%20%26%20PCA/Pubity%20X%20Wuthering%20Heights%20Campaign%20Report7%5B100%5D.xlsx" target="_blank">Report â</a></td>
+<td class="td-brand">WB / Wuthering Heights</td><td>UK Campaign</td><td>Feb 9–13, 2026</td>
+<td class="td-num">6.12M</td><td class="td-num">83K</td><td class="td-num">1.5%</td><td class="td-num">117%</td><td>UK</td>
+<td class="td-hs"><a href="https://app.hubspot.com/contacts/143333975/record/0-3/313386810556" target="_blank">HS →</a></td>
+<td class="td-link"><a href="https://pubitypgl.sharepoint.com/sites/Pubity/Shared%20Documents/Brand%20Partnerships%20Hub/Client%20Services/Clients/Warner%20Bros/2026/292_wb_themummy_uk_0226/7.%20Reporting%20%26%20PCA/Pubity%20X%20Wuthering%20Heights%20Campaign%20Report7%5B100%5D.xlsx" target="_blank">Report →</a></td>
 </tr>
 <tr>
-<td class="td-brand">Higgsfield AI</td><td>Always On (Q1+Q2)</td><td>Dec 2025 â ongoing</td>
-<td class="td-num">18M+</td><td class="td-num">225K+</td><td class="td-num">~1.5%</td><td class="td-num">â</td><td>ðºð¸</td>
-<td class="td-hs"><a href="https://app.hubspot.com/contacts/143333975/record/0-3/410589362388" target="_blank">HS Q1 â</a></td>
-<td class="td-link"><a href="https://pubitypgl.sharepoint.com/sites/Pubity/Shared%20Documents/Brand%20Partnerships%20Hub/Client%20Services/Clients/Higgsfield%20AI/274_higgsfieldai_alwayson_us_1225/3.%20Kick%20Off%20Deck/PubityGroup_Higgsfield_AlwaysOn_01.2026.pdf" target="_blank">Deck â</a></td>
+<td class="td-brand">Higgsfield AI</td><td>Always On (Q1+Q2)</td><td>Dec 2025 – ongoing</td>
+<td class="td-num">18M+</td><td class="td-num">225K+</td><td class="td-num">~1.5%</td><td class="td-num">—</td><td>US</td>
+<td class="td-hs"><a href="https://app.hubspot.com/contacts/143333975/record/0-3/410589362388" target="_blank">HS Q1 →</a></td>
+<td class="td-link"><a href="https://pubitypgl.sharepoint.com/sites/Pubity/Shared%20Documents/Brand%20Partnerships%20Hub/Client%20Services/Clients/Higgsfield%20AI/274_higgsfieldai_alwayson_us_1225/3.%20Kick%20Off%20Deck/PubityGroup_Higgsfield_AlwaysOn_01.2026.pdf" target="_blank">Deck →</a></td>
 </tr>
 <tr>
 <td class="td-brand">Popeyes</td><td>FNAF</td><td>2025</td>
-<td class="td-num">3.6M</td><td class="td-num">â</td><td class="td-num">5.8%</td><td class="td-num">â</td><td>ðºð¸</td>
-<td class="td-hs"><a href="https://app.hubspot.com/contacts/143333975/record/0-3/229237603533" target="_blank">HS â</a></td>
-<td class="td-link">â</td>
+<td class="td-num">3.6M</td><td class="td-num">—</td><td class="td-num">5.8%</td><td class="td-num">—</td><td>US</td>
+<td class="td-hs"><a href="https://app.hubspot.com/contacts/143333975/record/0-3/229237603533" target="_blank">HS →</a></td>
+<td class="td-link">—</td>
 </tr>
 <tr>
 <td class="td-brand">Buldak</td><td>Viral Noodle Campaign</td><td>2025</td>
-<td class="td-num">5.4M</td><td class="td-num">389K</td><td class="td-num">7.2%</td><td class="td-num">â</td><td>ðºð¸</td>
-<td class="td-hs">â</td>
-<td class="td-link">â</td>
+<td class="td-num">5.4M</td><td class="td-num">389K</td><td class="td-num">7.2%</td><td class="td-num">—</td><td>US</td>
+<td class="td-hs">—</td>
+<td class="td-link">—</td>
 </tr>
 <tr>
 <td class="td-brand">CeraVe</td><td>Kevin Durant</td><td>Jan 2026</td>
-<td class="td-num">4.5M</td><td class="td-num">234K</td><td class="td-num">5.2%</td><td class="td-num">â</td><td>ðºð¸</td>
-<td class="td-hs"><a href="https://app.hubspot.com/contacts/143333975/record/0-3/444628156664" target="_blank">HS â</a></td>
-<td class="td-link"><a href="https://pubitypgl.sharepoint.com/sites/Pubity/Shared%20Documents/Brand%20Partnerships%20Hub/Client%20Services/Clients/Cera%20Ve/275_CeraVe_KevinDurant_US_2025%20-%20AMPLIFICATION/8.%20Reporting%20%26%20PCA/" target="_blank">Folder â</a></td>
+<td class="td-num">4.5M</td><td class="td-num">234K</td><td class="td-num">5.2%</td><td class="td-num">—</td><td>US</td>
+<td class="td-hs"><a href="https://app.hubspot.com/contacts/143333975/record/0-3/444628156664" target="_blank">HS →</a></td>
+<td class="td-link"><a href="https://pubitypgl.sharepoint.com/sites/Pubity/Shared%20Documents/Brand%20Partnerships%20Hub/Client%20Services/Clients/Cera%20Ve/275_CeraVe_KevinDurant_US_2025%20-%20AMPLIFICATION/8.%20Reporting%20%26%20PCA/" target="_blank">Folder →</a></td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
-<div class="no-results hidden" id="no-results"><div style="font-size:32px;margin-bottom:12px">ð</div>No campaigns match your filters. Try adjusting region, year or industry.</div>
+
+<div class="no-results hidden" id="no-results"><div style="font-size:24px;margin-bottom:12px;color:var(--muted)">[ No results ]</div>No campaigns match your filters. Try adjusting region, year or industry.</div>
 </div>
-<!-- âââââââââââââââââââââââââââââââââââââââ STRATEGIC BRIEF RESPONSE SUGGESTIONS âââââââââââââââââââââââââââââââââââââââ -->
+
 <script>
 const filters={region:'all',year:'all',industry:'all',status:'all'};
 function setFilter(t,v){
@@ -1016,6 +1072,12 @@ function setFilter(t,v){
       row.querySelectorAll('.filter-btn').forEach(b=>{b.classList.toggle('active',b.getAttribute('onclick').includes("'"+v+"'"));});
     }
   });
+  // handle status buttons in header badge
+  if(t==='status'){
+    document.querySelectorAll('.status-filter-btn').forEach(b=>{
+      b.classList.toggle('active',b.getAttribute('onclick').includes("'"+v+"'"));
+    });
+  }
   applyFilters();
 }
 function applyFilters(){
@@ -1037,6 +1099,7 @@ function applyFilters(){
   const all=region==='all'&&year==='all'&&industry==='all'&&status==='all';
   const ds=document.getElementById('deliv-section');if(ds)ds.style.display=all?'':'none';
   const cs2=document.getElementById('charts-section');if(cs2)cs2.style.display=all?'':'none';
+  const ss=document.getElementById('seller-summary');if(ss)ss.style.display=all?'':'none';
   const nr=document.getElementById('no-results');if(nr)nr.classList.toggle('hidden',visible>0);
   const rc=document.getElementById('results-count');if(rc)rc.textContent=visible+' campaign'+(visible!==1?'s':'')+' shown';
 }
@@ -1048,76 +1111,52 @@ function renderCharts(){
   const views=[40.9,8.1,42.7,25.2,8.7,7.9,12.6,1.9,12.0,0];
   const counts=[7,3,9,5,3,2,5,2,5,1];
   const pal=['#ff6d3b','#784bd1','#FFD700','#579bfc','#df2f4a','#ee5a24','#ff9f43','#1289A7','#216edf','#A3CB38'];
-  new Chart(bCtx,{type:'bar',data:{labels,datasets:[{label:'Views (M)',data:views,backgroundColor:pal,borderRadius:4}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.parsed.y+'M views'}}},scales:{x:{ticks:{color:'#888',font:{size:10}},grid:{color:'#222'}},y:{ticks:{color:'#888'},grid:{color:'#222'},title:{display:true,text:'Views (M)',color:'#888',font:{size:11}}}}}});
+  new Chart(bCtx,{type:'bar',data:{labels,datasets:[{label:'Views (M)',data:views,backgroundColor:pal,borderRadius:4}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.parsed.y+'M views'}}},scales:{x:{ticks:{color:'#6b7280',font:{size:10}},grid:{color:'#e5e7eb'}},y:{ticks:{color:'#6b7280'},grid:{color:'#e5e7eb'},title:{display:true,text:'Views (M)',color:'#6b7280',font:{size:11}}}}}});
   const nzL=labels.filter((_,i)=>counts[i]>0);
   const nzC=counts.filter(c=>c>0);
   const nzP=pal.filter((_,i)=>counts[i]>0);
-  new Chart(dCtx,{type:'doughnut',data:{labels:nzL,datasets:[{data:nzC,backgroundColor:nzP,borderColor:'#0d0d0d',borderWidth:2}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'right',labels:{color:'#888',font:{size:10},boxWidth:12,padding:8}}}}});
+  new Chart(dCtx,{type:'doughnut',data:{labels:nzL,datasets:[{data:nzC,backgroundColor:nzP,borderColor:'#ffffff',borderWidth:2}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'right',labels:{color:'#374151',font:{size:10},boxWidth:12,padding:8}}}}});
 }
 window.addEventListener('DOMContentLoaded',()=>{renderCharts();applyFilters();});
 </script>
-</body>
-</html>
-s within 48 hours. Studios and agencies brief 3-4 shops simultaneously â speed wins.<br><br>
-        <strong style="color:var(--yellow);">Deck structure:</strong> Every pitch deck should include: (1) audience insight, (2) content strategy, (3) page/platform recommendation, (4) guaranteed/estimated impressions, (5) timeline, (6) reporting commitment, (7) optional BLS upsell.<br><br>
-        <strong style="color:var(--yellow);">Pricing:</strong> Lead with value (impressions, engagement, BLS data) before discussing pricing. Use PCA data from similar campaigns to justify rates.<br><br>
-        <strong style="color:var(--yellow);">SharePoint:</strong> Every campaign must have a SharePoint folder created on Day 1 of the deal closing. Use the naming convention: <code>XXX_brand_campaign_market_MMYY</code><br><br>
-        <strong style="color:var(--yellow);">Reporting:</strong> Send initial reporting within 48hrs of campaign end. Final PCA/wrap deck within 2 weeks. This is what drives renewals.<br><br>
-        <strong style="color:var(--yellow);">Brand Lift Studies:</strong> Upsell on every deal over Â£25K. Full Studies for travel and beauty; SaaS studies for entertainment and QSR. The BLS data is Pubity's biggest competitive advantage â use it.
-      </div>
-    </div>
-
-  </div>
+<section style="max-width:1200px;margin:0 auto;padding:32px 16px 56px">
+<h2 style="font-size:1rem;font-weight:800;color:#111827;margin:0 0 14px;padding-bottom:8px;border-bottom:3px solid #FFD700;text-transform:uppercase;letter-spacing:0.05em">Seller Performance Summary</h2>
+<div style="background:#fff;border:1px solid #e5e7eb;border-radius:10px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.07)">
+<table style="width:100%;border-collapse:collapse">
+<thead><tr style="background:#FFD700">
+<th style="padding:10px 16px;text-align:left;font-size:11px;font-weight:700;color:#111827;text-transform:uppercase;letter-spacing:.06em">Seller</th>
+<th style="padding:10px 16px;text-align:center;font-size:11px;font-weight:700;color:#111827;text-transform:uppercase;letter-spacing:.06em">Campaigns Pitched</th>
+<th style="padding:10px 16px;text-align:center;font-size:11px;font-weight:700;color:#111827;text-transform:uppercase;letter-spacing:.06em">Closed Won</th>
+<th style="padding:10px 16px;text-align:center;font-size:11px;font-weight:700;color:#111827;text-transform:uppercase;letter-spacing:.06em">Lost</th>
+<th style="padding:10px 16px;text-align:center;font-size:11px;font-weight:700;color:#111827;text-transform:uppercase;letter-spacing:.06em">Win Rate</th>
+</tr></thead>
+<tbody><tr style="background:#ffffff;border-bottom:1px solid #f3f4f6">
+<td style="padding:11px 16px;font-weight:600;color:#111827">Alex Kaars Sijpesteijn</td>
+<td style="padding:11px 16px;text-align:center;color:#374151">27</td>
+<td style="padding:11px 16px;text-align:center;color:#16a34a;font-weight:700">27</td>
+<td style="padding:11px 16px;text-align:center;color:#9ca3af;font-weight:400">0</td>
+<td style="padding:11px 16px;text-align:center"><span style="background:#dcfce7;color:#15803d;padding:3px 10px;border-radius:20px;font-size:12px;font-weight:700">100%</span></td>
+</tr><tr style="background:#f9fafb;border-bottom:1px solid #f3f4f6">
+<td style="padding:11px 16px;font-weight:600;color:#111827">Global</td>
+<td style="padding:11px 16px;text-align:center;color:#374151">8</td>
+<td style="padding:11px 16px;text-align:center;color:#16a34a;font-weight:700">8</td>
+<td style="padding:11px 16px;text-align:center;color:#9ca3af;font-weight:400">0</td>
+<td style="padding:11px 16px;text-align:center"><span style="background:#dcfce7;color:#15803d;padding:3px 10px;border-radius:20px;font-size:12px;font-weight:700">100%</span></td>
+</tr><tr style="background:#ffffff;border-bottom:1px solid #f3f4f6">
+<td style="padding:11px 16px;font-weight:600;color:#111827">Myles</td>
+<td style="padding:11px 16px;text-align:center;color:#374151">1</td>
+<td style="padding:11px 16px;text-align:center;color:#16a34a;font-weight:700">1</td>
+<td style="padding:11px 16px;text-align:center;color:#9ca3af;font-weight:400">0</td>
+<td style="padding:11px 16px;text-align:center"><span style="background:#dcfce7;color:#15803d;padding:3px 10px;border-radius:20px;font-size:12px;font-weight:700">100%</span></td>
+</tr><tr style="background:#fefce8;border-top:2px solid #FFD700">
+<td style="padding:13px 16px;font-weight:800;color:#111827;letter-spacing:0.03em">TOTAL</td>
+<td style="padding:13px 16px;text-align:center;font-weight:800;color:#111827">36</td>
+<td style="padding:13px 16px;text-align:center;font-weight:800;color:#16a34a">36</td>
+<td style="padding:13px 16px;text-align:center;font-weight:800;color:#9ca3af">0</td>
+<td style="padding:13px 16px;text-align:center"><span style="background:#FFD700;color:#111827;padding:3px 10px;border-radius:20px;font-size:12px;font-weight:800">100%</span></td>
+</tr></tbody>
+</table>
 </div>
-
-<script>
-const filters={region:'all',year:'all',industry:'all'};
-function setFilter(t,v){
-  filters[t]=v;
-  document.querySelectorAll('.filter-row').forEach(row=>{
-    const lbl=row.querySelector('.filter-label');
-    if(!lbl)return;
-    if(lbl.textContent.trim().toLowerCase()===t){
-      row.querySelectorAll('.filter-btn').forEach(b=>{b.classList.toggle('active',b.getAttribute('onclick').includes("'"+v+"'"));});
-    }
-  });
-  applyFilters();
-}
-function applyFilters(){
-  const{region,year,industry}=filters;
-  let visible=0;
-  document.querySelectorAll('.card').forEach(c=>{
-    if(c.closest('.section-lost'))return; // lost section always visible
-    const cr=c.dataset.region,cy=c.dataset.year,ci=c.dataset.industry;
-    const show=(region==='all'||cr===region)&&(year==='all'||cy===year)&&(industry==='all'||ci===industry);
-    c.style.display=show?'':'none';
-    if(show)visible++;
-  });
-  document.querySelectorAll('.section-wrap:not(.section-lost)').forEach(sec=>{
-    const hasVis=Array.from(sec.querySelectorAll('.card')).some(c=>c.style.display!=='none');
-    sec.style.display=hasVis?'':'none';
-  });
-  const all=region==='all'&&year==='all'&&industry==='all';
-  const ds=document.getElementById('deliv-section');if(ds)ds.style.display=all?'':'none';
-  const cs=document.getElementById('charts-section');if(cs)cs.style.display=all?'':'none';
-  const nr=document.getElementById('no-results');nr.classList.toggle('hidden',visible>0);
-  const rc=document.getElementById('results-count');if(rc)rc.textContent=visible+' campaign'+(visible!==1?'s':'')+' shown';
-}
-function renderCharts(){
-  const bCtx=document.getElementById('barChart');
-  const dCtx=document.getElementById('doughnutChart');
-  if(!bCtx||!dCtx)return;
-  const labels=['QSR/Food','Gaming','Entertainment','Tech/AI','Beauty','Middle East','FMCG/CPG','Sports','Streaming','Travel'];
-  const views=[40.9,8.1,42.7,25.2,8.7,7.9,12.6,1.9,12.0,0];
-  const counts=[7,3,9,5,3,2,5,2,5,1];
-  const pal=['#ff6d3b','#784bd1','#FFD700','#579bfc','#df2f4a','#ee5a24','#ff9f43','#1289A7','#216edf','#A3CB38'];
-  new Chart(bCtx,{type:'bar',data:{labels,datasets:[{label:'Views (M)',data:views,backgroundColor:pal,borderRadius:4}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.parsed.y+'M views'}}},scales:{x:{ticks:{color:'#888',font:{size:10}},grid:{color:'#222'}},y:{ticks:{color:'#888'},grid:{color:'#222'},title:{display:true,text:'Views (M)',color:'#888',font:{size:11}}}}}});
-  const nzL=labels.filter((_,i)=>counts[i]>0);
-  const nzC=counts.filter(c=>c>0);
-  const nzP=pal.filter((_,i)=>counts[i]>0);
-  new Chart(dCtx,{type:'doughnut',data:{labels:nzL,datasets:[{data:nzC,backgroundColor:nzP,borderColor:'#0d0d0d',borderWidth:2}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'right',labels:{color:'#888',font:{size:10},boxWidth:12,padding:8}}}}});
-}
-window.addEventListener('DOMContentLoaded',()=>{renderCharts();applyFilters();});
-</script>
+</section>
 </body>
 </html>
